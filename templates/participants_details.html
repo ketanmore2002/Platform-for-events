@@ -1,0 +1,145 @@
+{% load static %}
+{% load cache %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Participant Details</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+
+    <div class="container position-relative py-3 pb-5 my-sm-5 rounded border shadow shadow-primary shadow-intensity-lg" style="max-width: 850px; min-height: 100vh;">
+        <div class=" d-flex justify-content-end" style="top: -20px; right: -15px;">
+            <button id="close-btn" class="rounded-circle p-1 border-0" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="gray" class="bi bi-x" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="d-sm-flex d-block align-items-center justify-content-between px-1 px-sm-3 pt-3 mb-5 mb-sm-0 text-center text-sm-left">
+            <div>
+                <img width="250px" height="250px" class="rounded-circle w-75 h-75" src="https://img.freepik.com/free-vector/scheduling-forming-filling-timetable-digital-calendar-time-management-arranging-controlling-optimizing-effective-plans-organization-vector-isolated-concept-metaphor-illustration_335657-2748.jpg?w=740&t=st=1664275035~exp=1664275635~hmac=8e38332e1d58f972cc48c0d8f0c44e58f1a48d2837f693e6aa38c19b29967aa7" alt="Event Organization">
+            </div>
+            <div class="px-0 px-sm-3">
+                <h4 class="text-dark">Event Name</h4>
+                <p class="text-secondary">Event Description, Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, deserunt. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores dignissimos molestiae in  molestias aut obcaecati?</p>
+            </div>
+        </div>
+        <h4 class="w-100 py-2 bg-success text-white px-3 mb-3 text-center text-sm-left">Participant Info</h4>
+        <div class="w-100 p-0 p-sm-3" style="border-bottom: 2px solid #1cc88a  ;">
+            <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2 border-bottom">
+                <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                    <span class="text-dark" style="font-size: 1.1rem">Team Name</span>
+                </div>
+                <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-sm-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                    <span class=" text-start" style="font-size: 1rem;">Royals Club</span>
+                </div>
+            </div>
+            <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2 border-bottom">
+                <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                    <span class="text-dark" style="font-size: 1.1rem">Number of Team Members</span>
+                </div>
+                <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-sm-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                    <span class=" text-start" style="font-size: 1rem;">4</span>
+                </div>
+            </div>
+            <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2 border-bottom">
+                <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                    <span class="text-dark" style="font-size: 1.1rem">Team Leader</span>
+                </div>
+                <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-sm-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                    <span class=" text-start" style="font-size: 1rem;">John Doe</span>
+                </div>
+            </div>
+            <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2 border-bottom">
+                <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                    <span class="text-dark" style="font-size: 1.1rem">Team Leader Phone</span>
+                </div>
+                <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-sm-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                    <span class=" text-start" style="font-size: 1rem;">4934059659</span>
+                </div>
+            </div>
+            <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2 border-bottom">
+                <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                    <span class="text-dark" style="font-size: 1.1rem">Team Leader Email</span>
+                </div>
+                <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-sm-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                    <span class=" text-start" style="font-size: 1rem;">teamleader@gmail.com</span>
+                </div>
+            </div>
+            <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2 border-bottom">
+                <div class="w-100 w-sm-50 mb-1 mb-sm-0d-flex text-center text-sm-left">
+                    <span class="text-dark" style="font-size: 1.1rem">Team Members</span>
+                </div>
+                <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-sm-3 text-center text-sm-left">
+                    <ol class="list-unstyled">
+                        <li><span class=" text-start d-inline">Critian Holmes</span></li>
+                        <li><span class=" text-start d-inline">Critian Holmes</span></li>
+                        <li><span class=" text-start d-inline">Critian Holmes</span></li>
+                        <li><span class=" text-start d-inline">Critian Holmes</span></li>
+                        <li><span class=" text-start d-inline">Critian Holmes</span></li>
+                        <li><span class=" text-start d-inline">Critian Holmes</span></li>
+                    </ol>
+                    <!-- <span class=" text-start d-inline">Critian Holmes</span>,
+                    <span class=" text-start d-inline">Critian Holmes</span>,
+                    <span class=" text-start d-inline">Critian Holmes</span>,
+                    <span class=" text-start d-inline">Critian Holmes</span>,
+                    <span class=" text-start d-inline">Critian Holmes</span>,
+                    <span class=" text-start d-inline">Critian Holmes</span>, -->
+                </div>
+            </div>
+            <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2">
+                <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                    <span class="text-dark" style="font-size: 1.1rem">Payment Status</span> 
+                </div>
+                <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                    <span class=" text-start" style="font-size: 1rem;">Paid</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <!-- <script src="js/demo/chart-area-demo.js' %}"></script>
+    <script src="js/demo/chart-pie-demo.js' %}"></script> -->
+
+    <!-- Page level custom scripts -->
+    <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+
+</body>
+
+</html>

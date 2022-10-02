@@ -1,0 +1,740 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin Panel</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+     <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+
+
+     <!-- JQuery -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav sidebar sidebar-dark accordion d-md-block" style="background-color: #676af3;" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a href="" class="sidebar-brand d-flex align-items-center">
+                <div class="sidebar-brand-text">Website Name</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0 mb-2">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item my-1 active">
+                <a class="nav-link link-1" style="cursor: pointer;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
+                        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
+                    </svg>
+                    <span class="mt-1 mx-2">Dashboard</span></a>
+            </li>
+
+            <li class="nav-item my-1">
+                <a class="nav-link link-2" style="cursor: pointer;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-file-earmark-excel-fill" viewBox="0 0 16 16">
+                        <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM5.884 6.68 8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 1 1 .768-.64z"/>
+                    </svg>
+                    <span class="mt-1 mx-2">Unpaid Participants</span></a>
+            </li>
+
+            <li class="nav-item my-1">
+                <a class="nav-link link-2" href="/logout" style="text-decoration: none; color: white;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                        <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                    </svg>
+                    <span class="mt-1 mx-2">Log Out</span>
+                    
+                </a>
+                
+            </li>
+
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block mt-2">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <!-- <div class="w-100 text-left mt-5 d-flex justify-content-center">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div> -->
+
+            <div class="w-100 text-left mt-5 d-flex justify-content-center align-items-baseline">
+                <button class="rounded-circle border-0" id="Toggle1" style="background-color: rgba(194, 194, 194, 0.484); width: 40px; height: 40px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+                    </svg>
+                </button>
+
+                <button class="d-none rounded-circle border-0" id="Toggle2" style="background-color: rgba(194, 194, 194, 0.484); width: 40px; height: 40px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <script>
+                document.getElementById("Toggle1").addEventListener("click", ()=>{
+                    document.getElementById("accordionSidebar").classList.toggle("toggled");
+                    document.getElementById("Toggle1").classList.add("d-none");
+                    document.getElementById("Toggle2").classList.remove("d-none");
+                    
+                })
+                document.getElementById("Toggle2").addEventListener("click", ()=>{
+                    document.getElementById("accordionSidebar").classList.toggle("toggled");
+                    document.getElementById("Toggle2").classList.add("d-none");
+                    document.getElementById("Toggle1").classList.remove("d-none");
+                    
+                })
+            </script>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column" style="background-color: white;">
+            <!-- Main Content -->
+            <div id="content">
+                
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow d-md-none d-flex align-items-center justify-content-between">
+                    
+                    <button id="sidebarToggleMenu" class=" border-0 bg-white d-md-none mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                    </button>
+
+                </nav>
+                <!-- End of Topbar -->
+
+
+                <input type="hidden" name="event_type" id="event_type" value="{{ event_type }}">
+
+
+
+
+                
+                {% if event_type == "Team" %}
+                <!-- Begin Page Content -->
+                <div class="page container-fluid main my-4">
+
+                    <div class="row" style="margin-top: 50px;">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xl font-weight-bold text-primary text-uppercase mb-1">
+                                                Total Users</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ total_users }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                                                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xl font-weight-bold text-success text-uppercase mb-1">
+                                                this Event Participants</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ event_paid_participant }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
+                                                <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                                                <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xl font-weight-bold text-info text-uppercase mb-1">
+                                                Total Fee Collected</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">₹ {{ total_amount }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                                <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xl font-weight-bold text-warning text-uppercase mb-1">
+                                                Unpaid Participants</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ unpaid_users }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                              </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="my-5">
+                        <!-- DataTales Example -->
+                        <div class="card shadow mb-4 ">
+                            <!-- <div class="card-header py-3" style="background-color: #3e41ed;">
+                                <h4 class="text-left m-0 font-weight-bold text-white" >Participants List</h4>
+                            </div> -->
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr style="background-color: rgb(73, 73, 73); color: white; border: 1px solid white;">
+                                                <th  width="10%">ID</th>
+                                                <th> Name</th>
+                                                <th width="20%">
+                                                    <span class="d-inline">Email</span>
+                                                    <button type="button" class="d-inline bg-transparent border-0 float-right" data-toggle="tooltip" data-placement="top" title="Click on email to go email ">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                                <th width="20%" class="">
+                                                    <span class="d-inline">Phone No.</span>
+                                                    <button type="button" class="d-inline bg-transparent border-0 float-right" data-toggle="tooltip" data-placement="top" title="Click on phone numbers to go whatsapp ">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                                <th width="15%">Payment Status</th>
+                                                <th width="10%"  class="text-center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="participant-table">
+
+                                            {% for team in  data %}
+                                            
+                                            <tr>
+                                                <td>{{ team.pk }}</td>
+                                                <td>{{ team.team_name }}</td>
+                                                <td>
+                                                    <a target="_blank" class="d-inline ml-3 text-decoration-none" href="mailto:riteshthawkar2003@gmail.com">
+                                                        <span class="d-inline">{{ team.leader_email }}</span>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a target="_blank" class="d-inline ml-3 text-decoration-none" href="https://wa.me/919552361592">
+                                                        +91<span class="d-inline">{{ team.leader_phone_number }}</span>
+                                                    </a>
+                                                </td>
+                                                <td>{{ team.payment_status }}</td>
+                                                <td class="page-detail text-primary" style="cursor:pointer;" onclick="detail_page_info( {{ team.pk }} )">Details</td>
+                                            </tr>
+
+                                            {% endfor %}
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+                {% else %}
+                <!-- Begin Page Content -->
+                <div class="page container-fluid main my-4">
+
+                    <div class="row" style="margin-top: 50px;">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xl font-weight-bold text-primary text-uppercase mb-1">
+                                                Total Users</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ total_users }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                                                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xl font-weight-bold text-success text-uppercase mb-1">
+                                                this Event Participants</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ event_paid_participant }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
+                                                <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                                                <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xl font-weight-bold text-info text-uppercase mb-1">
+                                                Total Fee Collected</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">₹ {{ total_amount }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                                <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xl font-weight-bold text-warning text-uppercase mb-1">
+                                                Unpaid Participants</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ unpaid_users }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                              </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="my-5">
+                        <!-- DataTales Example -->
+                        <div class="card shadow mb-4 ">
+                            <!-- <div class="card-header py-3" style="background-color: #3e41ed;">
+                                <h4 class="text-left m-0 font-weight-bold text-white" >Participants List</h4>
+                            </div> -->
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr style="background-color: rgb(73, 73, 73); color: white; border: 1px solid white;">
+                                                <th  width="10%">ID</th>
+                                                <th> Name</th>
+                                                <th width="20%">
+                                                    <span class="d-inline">Email</span>
+                                                    <button type="button" class="d-inline bg-transparent border-0 float-right" data-toggle="tooltip" data-placement="top" title="Click on email to go email ">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                                <th width="20%" class="">
+                                                    <span class="d-inline">Phone No.</span>
+                                                    <button type="button" class="d-inline bg-transparent border-0 float-right" data-toggle="tooltip" data-placement="top" title="Click on phone numbers to go whatsapp ">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                                <th width="15%">Payment Status</th>
+                                                <th width="10%"  class="text-center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="participant-table">
+
+                                            {% for player in  data %}
+                                            
+                                            <tr>
+                                                <td>{{ player.pk }}</td>
+                                                <td>{{ player.player_name }}</td>
+                                                <td>
+                                                    <a target="_blank" class="d-inline ml-3 text-decoration-none" href="mailto:riteshthawkar2003@gmail.com">
+                                                        <span class="d-inline">{{ player.player_email }}</span>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a target="_blank" class="d-inline ml-3 text-decoration-none" href="https://wa.me/919552361592">
+                                                        +91<span class="d-inline">{{ player.player_phone_number }}</span>
+                                                    </a>
+                                                </td>
+                                                <td>{{ player.payment_status }}</td>
+                                                <td class="page-detail text-primary" style="cursor:pointer;" onclick="player_detail_page_info( {{ player.pk }} )">Details</td>
+                                            </tr>
+
+                                            {% endfor %}
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+                {% endif %}
+                <div class="page d-none container-fluid main">
+                    <div class="my-5">
+                        <!-- DataTales Example -->
+                        <div class="card shadow mb-4 ">
+                            <div class="card-header py-3">
+                                <h4 class="text-left m-0 font-weight-bold text-primary">Unpaid Participants List</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr style="background-color: rgb(73, 73, 73); color: white; border: 1px solid white;">
+                                                <th  width="10%">ID</th>
+                                                <th> Name</th>
+                                                <th width="20%">
+                                                    <span class="d-inline">Email</span>
+                                                    <button type="button" class="d-inline bg-transparent border-0 float-right" data-toggle="tooltip" data-placement="top" title="Click on email to go email ">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                                <th width="20%" class="">
+                                                    <span class="d-inline">Phone No.</span>
+                                                    <button type="button" class="d-inline bg-transparent border-0 float-right" data-toggle="tooltip" data-placement="top" title="Click on phone numbers to go whatsapp ">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                        </svg>
+                                                    </button>
+                                                </th>
+                                                <th width="15%">Payment Status</th>
+                                                <th width="10%"  class="text-center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="unpaid-teams-table">
+                                            {% for team in  unpaid_data %}
+                                                <tr>
+                                                    <td>{{ team.pk }}</td>
+                                                    <td>{{ team.team_name }}</td>
+                                                    <td>
+                                                        <a target="_blank" class="d-inline ml-3 text-decoration-none" href="mailto:riteshthawkar2003@gmail.com">
+                                                            <span class="d-inline">{{ team.leader_email }}</span>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a target="_blank" class="d-inline ml-3 text-decoration-none" href="https://wa.me/919552361592">
+                                                            +91<span class="d-inline">{{ team.leader_phone_number }}</span>
+                                                        </a>
+                                                    </td>
+                                                    <td>{{ team.payment_status }}</td>
+                                                    <td class="page-detail text-primary" style="cursor:pointer;" onclick="detail_page_info( {{ team.pk }} )">Details</td>
+                                                </tr>
+
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+                {% if event_type == "Team" %}
+                <div class="page detail-page d-none container position-relative py-3 pb-5 my-sm-5 rounded border shadow shadow-primary shadow-intensity-lg" style="max-width: 850px; min-height: 100vh;">
+                    <div class=" d-flex justify-content-end" style="top: -20px; right: -15px;">
+                        <button id="close-detail-page" class="rounded-circle p-1 border-0" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="gray" class="bi bi-x" viewBox="0 0 16 16">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </button>
+                    </div>
+            
+                    <div class="d-sm-flex d-block align-items-center justify-content-between px-1 px-sm-3 pt-3 mb-5 mb-sm-0 text-center text-sm-left">
+                        <div>
+                            <img class="rounded-circle w-75 h-75" src="https://img.freepik.com/free-vector/scheduling-forming-filling-timetable-digital-calendar-time-management-arranging-controlling-optimizing-effective-plans-organization-vector-isolated-concept-metaphor-illustration_335657-2748.jpg?w=740&t=st=1664275035~exp=1664275635~hmac=8e38332e1d58f972cc48c0d8f0c44e58f1a48d2837f693e6aa38c19b29967aa7" alt="Event Organization">
+                        </div>
+                        <div class="px-0 px-sm-3">
+                            <h4 class="text-dark" id="team_event_name">{{ event_name }}</h4>
+                            <p class="text-secondary" id="team_event_desc">{{ event_desc }}?</p>
+                        </div>
+                    </div>
+                    <h4 class="w-100 py-3 bg-success text-white px-3 mb-3 text-center text-sm-left">Participant Info</h4>
+                    <div class="w-100 p-0 p-sm-3" style="border-bottom: 2px solid #1cc88a  ;">
+                        <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2 border-bottom">
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                                <span class="text-dark" style="font-size: 1.1rem">Team Name</span>
+                            </div>
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-sm-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                                <span class=" text-start" style="font-size: 1rem;" id="team_name">Royals Club</span>
+                            </div>
+                        </div>
+                        <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2 border-bottom">
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                                <span class="text-dark" style="font-size: 1.1rem">Number of Team Members</span>
+                            </div>
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-sm-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                                <span class=" text-start" style="font-size: 1rem;" id="team_member_no">4</span>
+                            </div>
+                        </div>
+                        <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2 border-bottom">
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                                <span class="text-dark" style="font-size: 1.1rem">Team Leader</span>
+                            </div>
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-sm-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                                <span class=" text-start" style="font-size: 1rem;" id="team_leader">John Doe</span>
+                            </div>
+                        </div>
+                        <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2 border-bottom">
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                                <span class="text-dark" style="font-size: 1.1rem">Team Leader Phone</span>
+                            </div>
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-sm-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                                <span class=" text-start" style="font-size: 1rem;" id="team_leader_phone">4934059659</span>
+                            </div>
+                        </div>
+                        <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2 border-bottom">
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                                <span class="text-dark" style="font-size: 1.1rem">Team Leader Email</span>
+                            </div>
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-sm-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                                <span class=" text-start" style="font-size: 1rem;" id="team_leader_email">teamleader@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2 border-bottom">
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0d-flex text-center text-sm-left">
+                                <span class="text-dark" style="font-size: 1.1rem">Team Members</span>
+                            </div>
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-sm-3 text-center text-sm-left">
+                                <ul class="pl-1" id="team_member_names">
+                                    <li><span class=" text-start d-inline">Critian Holmes</span></li>
+                                    <li><span class=" text-start d-inline">Critian Holmes</span></li>
+                                    <li><span class=" text-start d-inline">Critian Holmes</span></li>
+                                    
+                                </ul>
+                                <!-- <span class=" text-start d-inline">Critian Holmes</span>,
+                                <span class=" text-start d-inline">Critian Holmes</span>,
+                                <span class=" text-start d-inline">Critian Holmes</span>,
+                                <span class=" text-start d-inline">Critian Holmes</span>,
+                                <span class=" text-start d-inline">Critian Holmes</span>,
+                                <span class=" text-start d-inline">Critian Holmes</span>, -->
+                            </div>
+                        </div>
+                        <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2">
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                                <span class="text-dark" style="font-size: 1.1rem">College Name</span> 
+                            </div>
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                                <span class=" text-start" style="font-size: 1rem;" id="college_name">Paid</span>
+                            </div>
+                        </div>
+                        <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2">
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                                <span class="text-dark" style="font-size: 1.1rem">Payment Status</span> 
+                            </div>
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                                <span class=" text-start" style="font-size: 1rem;" id="payment_status">Paid</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="page detail-page d-none container position-relative py-3 pb-5 my-sm-5 rounded border shadow shadow-primary shadow-intensity-lg" style="max-width: 850px; min-height: 100vh;">
+                    <div class=" d-flex justify-content-end" style="top: -20px; right: -15px;">
+                        <button id="close-detail-page" class="rounded-circle p-1 border-0" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="gray" class="bi bi-x" viewBox="0 0 16 16">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </button>
+                    </div>
+            
+                    <div class="d-sm-flex d-block align-items-center justify-content-between px-1 px-sm-3 pt-3 mb-5 mb-sm-0 text-center text-sm-left">
+                        <div style="width: 30%;">
+                            <img class="rounded-circle w-100 h-100" src="https://img.freepik.com/free-vector/scheduling-forming-filling-timetable-digital-calendar-time-management-arranging-controlling-optimizing-effective-plans-organization-vector-isolated-concept-metaphor-illustration_335657-2748.jpg?w=740&t=st=1664275035~exp=1664275635~hmac=8e38332e1d58f972cc48c0d8f0c44e58f1a48d2837f693e6aa38c19b29967aa7" alt="Event Organization">
+                        </div>
+                        <div class="px-0 px-sm-3" style="width: 70%;">
+                            <h4 class="text-dark" id="team_event_name">{{ event_name }}</h4>
+                            <p class="text-secondary" id="team_event_desc">{{ event_desc }}?</p>
+                        </div>
+                    </div>
+                    <h4 class="w-100 py-3 bg-success text-white px-3 mb-3 text-center text-sm-left">Participant Info</h4>
+                    <div class="w-100 p-0 p-sm-3" style="border-bottom: 2px solid #1cc88a  ;">
+                        <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2 border-bottom">
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                                <span class="text-dark" style="font-size: 1.1rem">Participant Name</span>
+                            </div>
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-sm-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                                <span class=" text-start" style="font-size: 1rem;" id="participant_name">Royals Club</span>
+                            </div>
+                        </div>
+                        
+                        <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2 border-bottom">
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                                <span class="text-dark" style="font-size: 1.1rem">Player Phone</span>
+                            </div>
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-sm-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                                <a class=" text-start" style="font-size: 1rem;" id="player_phone">4934059659</a>
+                            </div>
+                        </div>
+                        <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2 border-bottom">
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                                <span class="text-dark" style="font-size: 1.1rem">Player Email</span>
+                            </div>
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-sm-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                                <a class=" text-start" style="font-size: 1rem;" id="player_email">teamleader@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2">
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                                <span class="text-dark" style="font-size: 1.1rem">College Name</span> 
+                            </div>
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                                <span class=" text-start" style="font-size: 1rem;" id="participant_college_name">Paid</span>
+                            </div>
+                        </div>
+                        <div class="d-block d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-2">
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 text-center text-sm-left">
+                                <span class="text-dark" style="font-size: 1.1rem">Payment Status</span> 
+                            </div>
+                            <div class="w-100 w-sm-50 mb-1 mb-sm-0 px-3 justify-content-center justify-content-sm-start" style="display: flex; align-items: center;">
+                                <span class=" text-start" style="font-size: 1rem;" id="participant_payment_status">Paid</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+    <div id="alert_success" class="alert alert-success w-100 text-center position-fixed d-none mx-auto" style="top: 30px; max-width: 400px; left: 50%; transform: translate(-50%, 0)" role="alert">
+        This is a success alert—check it out!
+    </div>
+    <div id="alert_danger" class="alert alert-danger w-100 text-center position-fixed d-none mx-auto" style="top: 30px; max-width: 400px" role="alert">
+    This is a danger alert—check it out!
+    </div>
+
+
+
+    <div id="spinner" class="d-none flex-column align-items-center justify-content-center" style="position: fixed; top: 0%; width: 100%; height: 100vh;">
+        <div style="background-color: rgba(128, 128, 128, 0.486); text-align: center; padding: 1rem; border-radius: 10px;">
+            <div class="spinner-border text-dark" style="width: 2rem; height: 2rem; color: rgb(0, 0, 0);" role="status">
+                <span class="sr-only">Processing...</span>
+              </div><br>
+              <strong style="color: black; font-size: 1.1rem; font-weight: bold; text-align: center; width: 100%;">Processing.....</strong>
+        </div>
+    </div>
+
+    
+
+
+    <!-- Page level custom scripts -->
+    <script src="{% static 'adminpanel.js' %}"></script>
+
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>
