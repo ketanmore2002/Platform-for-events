@@ -1,1 +1,1 @@
-web: gunicorn event.wsgi
+web: bin/start-pgbouncer gunicorn event.wsgi
