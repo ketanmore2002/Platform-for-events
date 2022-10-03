@@ -41,12 +41,7 @@ class events(models.Model):
     first_prize = models.CharField(max_length=300,blank=True,null=True)
     second_prize = models.CharField(max_length=300,blank=True,null=True)
     third_prize = models.CharField(max_length=300,blank=True,null=True)
-
-
-
-
     
-
 
     def __str__(self):
         return self.event_name
@@ -56,7 +51,7 @@ class teams(models.Model):
 
     team_name = models.CharField(max_length=300,blank=True,null=True)
     number_of_members = models.CharField(max_length=300,blank=True,null=True)
-    name_of_members = models.CharField(max_length=1000,blank=True,null=True) 
+    name_of_members = models.IntegerField(blank=True,null=True) 
     event_participated = models.CharField(max_length=300,blank=True,null=True)
     leader = models.CharField(max_length=300,blank=True,null=True) 
     leader_user_name = models.CharField(max_length=300,blank=True,null=True) 

@@ -59,7 +59,12 @@ function makeName () {
     
     $('#name_of_members').val('');
     $('#name_of_members').val(values.join('|'));
+    $('#teamform').submit();
 };
+
+$("#submitbtn").click(()=>{
+    makeName();
+})
 
 
 if(document.getElementById("event_type_2").checked){

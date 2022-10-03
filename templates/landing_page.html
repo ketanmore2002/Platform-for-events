@@ -31,6 +31,7 @@
            font-size: 12px;
        }
      }
+  
    </style>
 
     <!-- Tailwind -->
@@ -59,19 +60,18 @@
 <body>
     <div class="w-full">
 
-        <header id="header_navbar" style="max-width: 2000px; top: 0; left: 50%; transform: translate(-50%, 0); z-index: 999;" class="fixed top-0 left-50 w-full text-white body-font mx-auto mb-2 mx-auto bg-[#00000038]">
+        <header id="header_navbar" style="max-width: 2000px; top: 0; left: 50%; transform: translate(-50%, 0); z-index: 999;" class="fixed top-0 left-50 w-full text-white body-font mx-auto mb-2 mx-auto bg-transparent">
             <div id="menuContainer" class="lg:container mx-auto block lg:flex  p-5 items-center justify-between">
               <div id="smallNavbar" class="flex lg:block items-center justify-between lg:w-fit w-full h-fit">
-                <a class="flex title-font font-medium items-center text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10">
+                <a class="flex title-font font-medium items-center text-black">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-blue-600">
                       <path fill-rule="evenodd" d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.177A7.547 7.547 0 016.648 6.61a.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 011.925-3.545 3.75 3.75 0 013.255 3.717z" clip-rule="evenodd" />
                   </svg>
-                    
-                  <span class="ml-3 text-xl">TechFest</span>
+                  <span class="ml-3 text-2xl font-bold">TechFest</span>
                 </a>
                 <div class="block lg:hidden">
                   <button id="menuOpener">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-9 h-9">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-9 h-9">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>                
                   </button>
@@ -81,25 +81,24 @@
                 <div  class="lg:flex flex-col lg:flex-row gap-6 lg:gap-0 items-center justify-between py-10 lg:py-0">
   
                   <nav class="mx-auto md:ml-auto flex flex-col lg:flex-row flex-wrap text-base items-center justify-centerlg:gap-5 gap-20 lg:gap-5 mb-20 lg:mb-0 lg:mr-5">
-                    <a href="/" class="lg:mr-5 px-2 py-1 text-lg font-medium cursor-pointer hover:text-white hover:border-b-2 hover:border-white">Home</a>
-                    <a href="{% url 'events' %}" class="lg:mr-5 px-2 py-1 text-lg font-medium cursor-pointer hover:text-white hover:border-b-2 hover:border-white">Events</a>
-                    <a href="{% url 'about' %}" class="lg:mr-5 px-2 py-1 text-lg font-medium cursor-pointer hover:text-white hover:border-b-2 hover:border-white">About Us</a>
-                    <!-- <a class="lg:mr-5 px-2 py-1 text-lg font-medium cursor-pointer hover:text-white hover:border-b-2 hover:border-white"">Contact Us</a> -->
+                    <a href="/" class="lg:mr-5 px-2 py-1 text-lg text-black font-bold cursor-pointer hover:text-blue-700 hover:border-b-4 hover:border-black">Home</a>
+                    <a href="{% url 'events' %}" class="lg:mr-5 px-2 py-1 text-lg text-black font-bold cursor-pointer hover:text-blue-700 hover:border-b-4 hover:border-black">Events</a>
+                    <a href="{% url 'about' %}" class="lg:mr-5 px-2 py-1 text-lg text-black font-bold cursor-pointer hover:text-blue-700 hover:border-b-4 hover:border-black">About Us</a>
                   </nav>
   
                   <div class="flex flex-col lg:flex-row  items-center justify-between gap-20 lg:gap-5">
   
                     {% if request.user.is_authenticated %}
   
-                      <a href="{% url 'my_events' %}" class="inline-flex items-center text-white border border-2 border-white py-2 px-3 focus:outline-none hover:bg-white hover:text-black hover:text-lg hover:border-0 rounded text-base mt-4 md:mt-0 cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-1">
+                      <a href="{% url 'my_events' %}" class="inline-flex items-center text-black font-bold border border-2 border-black py-2 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 cursor-pointer hover:text-blue-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6 mr-1">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
                         </svg>                                      
                         My Events
                       </a>
   
                       
-                      <a href="{% url 'logout' %}" class="inline-flex items-center text-white border border-2 border-white py-2 px-3 focus:outline-none hover:bg-white hover:text-black hover:text-lg hover:border-0 rounded text-base mt-4 md:mt-0 cursor-pointer">Sign Out
+                      <a href="{% url 'logout' %}" class="inline-flex items-center text-black font-bold border border-2 border-black py-2 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 cursor-pointer hover:text-blue-700">Sign Out
                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
                           <path d="M5 12h14M12 5l7 7-7 7"></path>
                         </svg>
@@ -110,7 +109,7 @@
   
                     <form method="post" action="{% provider_login_url 'google' %}?next=/">
                       {% csrf_token %}
-                      <button class="inline-flex items-center text-white border border-2 border-white py-2 px-3 focus:outline-none hover:bg-white hover:text-black hover:text-lg hover:border-0 rounded text-base mt-4 md:mt-0 cursor-pointer">Sign In
+                      <button class="inline-flex items-center text-black font-bold border border-2 border-black py-2 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 cursor-pointer hover:text-blue-700">Sign In
                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
                           <path d="M5 12h14M12 5l7 7-7 7"></path>
                         </svg>
@@ -125,244 +124,88 @@
                 </div>
               </div>
             </div>
-        </header>
-
-        
-        <div id="eventSlider" style="max-width: 1600px; width: 100%; height: 800px; " class="mx-auto relative border-b-2">
-            <div class="carousel-indicators absolute w-full h-full mx-auto text-center p-0 mb-4 flex items-center" style="top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #000000ca;">
+        </header>        
+        <div id="eventSlider" style="max-width: 2000px; width: 100%; max-height: 100vh; height: 800px;" class=" mx-auto relative border-b-2">
+            <div class="carousel-indicators absolute w-full h-full mx-auto text-center p-0 mb-4 flex items-center">
                 <div class="w-fit mx-auto">
-                    <h4 class="mb-1 text-2xl font-bold text-orange-600" style="font-family: 'Bungee Shade', cursive;"> Introducing to you </h4>
-                    <h1 class="title-font te text-5xl md:text-6xl lg:text-8xl mb-2 font-bold text-orange-800" style="font-family: 'Bungee Shade', cursive;">TechFest</h1>
-                    <p class="mb-4 leading-relaxed text-orange-600 mx-20">Meggings kinfolk echo park stumptown DIY, kale chips beard jianbing tousled pitchfork.</p>
-                    <div class="flex justify-center gap-5">
-                        <a href="{% url 'events' %}" class="inline-flex items-center text-orange-600 border border-2 border-orange-600 py-2 px-3 focus:outline-none hover:bg-orange-600 hover:text-white rounded text-base mt-4 md:mt-0">
-                        Become a Participant
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
+                    <h1 class="title-font text-7xl sm:text-7xl md:text-8xl lg:text-[10rem] mb-10 font-bold text-black" style="font-family: 'Bungee Shade', cursive;">TechFest</h1>
+                    <div class="grid grid-cols-4 md:grid-cols-4  lg:grid-cols-4 gap-5 w-fit mx-auto">
+                        <a href="{% url 'events' %}" class="text-center text-white bg-blue-600 font-bold py-4 px-5 skew-x-12 focus:outline-none hover:bg-opacity-70 hover:text-white mt-4 md:mt-0 flex items-center justify-center gap-2">
+                          <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9" stroke="currentColor" class="w-7 h-7">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                            </svg>                            
+                          </span>
+                          <span class="hidden lg:block">Events</span>
                         </a>
-                        <a href="{% url 'check_event' %}" class="inline-flex items-center text-orange-600 border border-2 border-orange-600 py-2 px-3 focus:outline-none hover:bg-orange-600 hover:text-white rounded text-base mt-4 md:mt-0">
-                          Become a Host
-                          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                              <path d="M5 12h14M12 5l7 7-7 7"></path>
-                          </svg>
+                        <a href="#steps" class="  text-center text-white font-bold bg-black  py-4 px-5 skew-x-12 focus:outline-none hover:bg-opacity-70 hover:text-white mt-4 md:mt-0 flex items-center justify-center gap-2">
+                          <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+                            </svg>                            
+                          </span>
+                          <span class="hidden lg:block">Steps</span>
                         </a>
+                        <a href="#eventprovoker" class="text-center text-white font-bold bg-black  py-4 px-5 skew-x-12 focus:outline-none hover:bg-opacity-70 hover:text-white mt-4 md:mt-0 flex items-center justify-center gap-2">
+                          <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0" />
+                            </svg>
+                          </span>
+                          <span class="hidden lg:block">Competitions</span>
+                        </a>
+                        <a href="#team" class=" text-center text-white font-bold bg-black  py-4 px-5 skew-x-12 focus:outline-none hover:bg-opacity-70 hover:text-white mt-4 md:mt-0 flex items-center justify-center gap-2">
+                          <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                            </svg>                            
+                          </span>
+                          <span class="hidden lg:block">Team</span>
+                        </a>
+                        
                     </div>
                 </div>
             </div>
-
-            <div id="carouselExampleCaptions" class="carousel slide relative w-full h-full" data-bs-ride="carousel" >
-                <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
-                    <button
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide-to="0"
-                    class="active"
-                    aria-current="true"
-                    aria-label="Slide 1"
-                    ></button>
-                    <button
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide-to="1"
-                    aria-label="Slide 2"
-                    ></button>
-                    <button
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide-to="2"
-                    aria-label="Slide 3"
-                    ></button>
-                </div>
-                <div class="carousel-inner relative w-full h-full overflow-hidden">
-                    <div class="carousel-item active relative float-left w-full h-full">
-                    <img
-                        src="https://img.freepik.com/free-vector/laptop-with-program-code-isometric-icon-software-development-programming-applications-dark-neon_39422-971.jpg?w=996&t=st=1664580976~exp=1664581576~hmac=b3a4f01fdfad71c1c1a68283ee060f40a478c957434f90123a90eab919bb9a10"
-                        class="block w-full h-full object-cover object-center "
-                        alt="..."
-                    />
-                    </div>
-                    <div class="carousel-item relative float-left w-full h-full">
-                    <img
-                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
-                        class="block w-full h-full object-cover object-center"
-                        alt="..."
-                    />
-                    </div>
-                    <div class="carousel-item relative float-left w-full h-full">
-                    <img
-                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                        class="block w-full h-full object-cover object-center"
-                        alt="..."
-                    />
-                    </div>
-                </div>
+            <div class="w-full h-full">
+              <video autoplay muted loop id="myVideo" width="100%" height="100vh" class="w-full h-full p-0 object-fill">
+                <source src="{% static 'background.mp4' %}" type="video/mp4">
+              </video>
             </div>
         </div>
         
 
-        <div id="eventprovoker" style="max-width: 1600px;" class="w-full py-20 mx-auto bg-white border-b-2">
-            <div class="flex flex-col text-center w-4/5 mb-10 mx-auto">
+        <div id="eventprovoker" style="max-width: 1600px;" class="w-full py-20 mx-auto bg-white border-b-2 bg-gray-300">
+            <div class="flex flex-col text-center w-full md:w-4/5 mb-10 mx-auto">
                 <h1 class="text-4xl sm:text-5xl font-bold title-font px-20 py-3 text-black w-fit mx-auto border-b-4 border-black">Competitions</h1>
             </div>
             <section class="max-w-7xl mx-auto text-gray-600 body-font">
                 <div class="container px-5 py-5 mx-auto">
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 ">
-                        {% comment %} <div class=" rounded-xl border shadow-lg">
-                            <div class="flex relative">
-                                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center rounded-xl" src="https://img.freepik.com/free-vector/business-competition-concept-illustration_114360-5823.jpg?w=740&t=st=1664580774~exp=1664581374~hmac=32f2c02bfc6fc330fb0cbcac6d34a24fa9be4f581e4676dd54d2b090ae73179d">
-                                <div class="px-8 py-10 relative z-10 w-full bg-white opacity-0 hover:opacity-100 rounded-xl">
-                                    <h2 class="tracking-widest text-sm title-font font-medium text-gray-500 mb-1">EVENT</h2>
-                                    <h1 class="title-font text-2xl font-bold font-medium text-gray-900 mb-3">Web Developement</h1>
-                                    <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita cumque quibusdam recusandae, dolores ut quidem sit repudiandae quis voluptatibus dicta.</p>
-                                    <a class="mt-3 text-indigo-500 inline-flex items-center cursor-pointer">Learn More
-                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                        <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div> {% endcomment %}
                         {% for event in events %}
-                        <div class=" rounded-xl border shadow-lg">
+                        <div class=" rounded-xl border shadow-lg bg-white">
                             <div class="flex relative">
-                                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center rounded-xl" src="https://img.freepik.com/free-vector/business-competition-concept-illustration_114360-5823.jpg?w=740&t=st=1664580774~exp=1664581374~hmac=32f2c02bfc6fc330fb0cbcac6d34a24fa9be4f581e4676dd54d2b090ae73179d">
-                                <div class="px-8 py-10 relative z-10 w-full bg-white opacity-0 hover:opacity-100 rounded-xl">
-                                <h2 class="tracking-widest text-sm title-font font-medium text-gray-500 mb-1">EVENT</h2>
-                                <h1 class="title-font text-2xl font-bold font-medium text-gray-900 mb-3">{{ event.event_name }}</h1>
-                                <p class="leading-relaxed">{{ event.discription | slice:":150" }}.....</p>
-                                <a href="" class="mt-3 text-indigo-500 inline-flex items-center cursor-pointer">Learn More
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                    </svg>
-                                </a>
+                                <div class="px-8 py-10 relative z-10 w-full bg-white rounded-xl">
+                                  <h2 class="tracking-widest text-sm title-font font-medium text-gray-500 mb-1">EVENT</h2>
+                                  <h1 class="title-font text-2xl font-bold font-medium text-gray-900 mb-3">{{ event.event_name }}</h1>
+                                  <p class="leading-relaxed">{{ event.discription | slice:":150" }}.....</p>
+                                  <a href="/details/{{ event.pk }}" class="mt-3 text-indigo-500 inline-flex items-center cursor-pointer">Learn More
+                                      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                      <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                      </svg>
+                                  </a>
                                 </div>
                             </div>
                         </div>
                         {% endfor %}
-                        {% comment %} <div class=" rounded-xl border shadow-xl">
-                            <div class="flex relative">
-                                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center rounded-xl" src="https://img.freepik.com/free-vector/business-competition-concept-illustration_114360-5823.jpg?w=740&t=st=1664580774~exp=1664581374~hmac=32f2c02bfc6fc330fb0cbcac6d34a24fa9be4f581e4676dd54d2b090ae73179d">
-                                <div class="px-8 py-10 relative z-10 w-full bg-white opacity-0 hover:opacity-100 rounded-xl">
-                                <h2 class="tracking-widest text-sm title-font font-medium text-gray-500 mb-1">EVENT</h2>
-                                <h1 class="title-font text-2xl font-bold font-medium text-gray-900 mb-3">Web Developement</h1>
-                                <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita cumque quibusdam recusandae, dolores ut quidem sit repudiandae quis voluptatibus dicta.</p>
-                                <a class="mt-3 text-indigo-500 inline-flex items-center cursor-pointer">Learn More
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                    </svg>
-                                </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class=" rounded-xl border shadow-xl">
-                            <div class="flex relative">
-                                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center rounded-xl" src="https://img.freepik.com/free-vector/business-competition-concept-illustration_114360-5823.jpg?w=740&t=st=1664580774~exp=1664581374~hmac=32f2c02bfc6fc330fb0cbcac6d34a24fa9be4f581e4676dd54d2b090ae73179d">
-                                <div class="px-8 py-10 relative z-10 w-full bg-white opacity-0 hover:opacity-100 rounded-xl">
-                                <h2 class="tracking-widest text-sm title-font font-medium text-gray-500 mb-1">EVENT</h2>
-                                <h1 class="title-font text-2xl font-bold font-medium text-gray-900 mb-3">Web Developement</h1>
-                                <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita cumque quibusdam recusandae, dolores ut quidem sit repudiandae quis voluptatibus dicta.</p>
-                                <a class="mt-3 text-indigo-500 inline-flex items-center cursor-pointer">Learn More
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                    </svg>
-                                </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class=" rounded-xl border shadow-xl">
-                            <div class="flex relative">
-                                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center rounded-xl" src="https://img.freepik.com/free-vector/business-competition-concept-illustration_114360-5823.jpg?w=740&t=st=1664580774~exp=1664581374~hmac=32f2c02bfc6fc330fb0cbcac6d34a24fa9be4f581e4676dd54d2b090ae73179d">
-                                <div class="px-8 py-10 relative z-10 w-full bg-white opacity-0 hover:opacity-100 rounded-xl">
-                                    <h2 class="tracking-widest text-sm title-font font-medium text-gray-500 mb-1">EVENT</h2>
-                                    <h1 class="title-font text-2xl font-bold font-medium text-gray-900 mb-3">Web Developement</h1>
-                                    <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita cumque quibusdam recusandae, dolores ut quidem sit repudiandae quis voluptatibus dicta.</p>
-                                    <a class="mt-3 text-indigo-500 inline-flex items-center cursor-pointer">Learn More
-                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                        <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div> {% endcomment %}
-                        {% comment %} <div class=" rounded-xl border shadow-xl">
-                            <div class="flex relative">
-                                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center rounded-xl" src="https://img.freepik.com/free-vector/business-competition-concept-illustration_114360-5823.jpg?w=740&t=st=1664580774~exp=1664581374~hmac=32f2c02bfc6fc330fb0cbcac6d34a24fa9be4f581e4676dd54d2b090ae73179d">
-                                <div class="px-8 py-10 relative z-10 w-full bg-white opacity-0 hover:opacity-100 rounded-xl">
-                                <h2 class="tracking-widest text-sm title-font font-medium text-gray-500 mb-1">EVENT</h2>
-                                <h1 class="title-font text-2xl font-bold font-medium text-gray-900 mb-3">Web Developement</h1>
-                                <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita cumque quibusdam recusandae, dolores ut quidem sit repudiandae quis voluptatibus dicta.</p>
-                                <a class="mt-3 text-indigo-500 inline-flex items-center cursor-pointer">Learn More
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                    </svg>
-                                </a>
-                                </div>
-                            </div>
-                        </div> {% endcomment %}
                     </div>
                 </div>
               </section>
         </div>
 
 
-        <div style="max-width: 1600px;" class="w-full py-20 mx-auto bg-white border-b-2">
-          <div class="flex flex-col text-center w-4/5 mb-10 mx-auto">
-              <h1 class="text-4xl sm:text-5xl font-bold title-font px-20 py-3 text-dark w-fit mx-auto border-b-4 border-black">Event Statistics</h1>
-          </div>
-          <section class="max-w-6xl mx-auto text-gray-600 body-font">
-              <div class="container px-5 py-10 mx-auto">
-                <div class="flex flex-wrap -m-4 text-center">
-                  <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-                    <div class="border-2 border-gray-200 px-4 py-6 text-center bg-gray-200 rounded-xl">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="text-dark w-20 h-20 mb-3 inline-block">
-                          <path d="M12.75 12.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM7.5 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM8.25 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM9.75 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM10.5 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM12.75 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM14.25 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM15 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM16.5 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM15 12.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM16.5 13.5a.75.75 0 100-1.5.75.75 0 000 1.5z" />
-                          <path fill-rule="evenodd" d="M6.75 2.25A.75.75 0 017.5 3v1.5h9V3A.75.75 0 0118 3v1.5h.75a3 3 0 013 3v11.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V7.5a3 3 0 013-3H6V3a.75.75 0 01.75-.75zm13.5 9a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5z" clip-rule="evenodd" />
-                      </svg>
-                      <h2 class="title-font font-medium text-3xl text-dark">10+</h2>
-                      <p class="leading-relaxed text-dark font-bold">Events</p>
-                    </div>
-                  </div>
-                  <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-                    <div class="border-2 border-gray-200 px-4 py-6 bg-gray-200 rounded-xl">
-                      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-dark w-20 h-20 mb-3 inline-block" viewBox="0 0 24 24">
-                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
-                        <circle cx="9" cy="7" r="4"></circle>
-                        <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
-                      </svg>
-                      <h2 class="title-font font-medium text-3xl text-dark">1k+</h2>
-                      <p class="leading-relaxed text-dark font-bold">Participants</p>
-                    </div>
-                  </div>
-                  <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-                      <div class="border-2 border-gray-200 px-4 py-6 rounded-lg bg-gray-200 rounded-xl">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="text-dark w-20 h-20 mb-3 inline-block">
-                              <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM9 7.5A.75.75 0 009 9h1.5c.98 0 1.813.626 2.122 1.5H9A.75.75 0 009 12h3.622a2.251 2.251 0 01-2.122 1.5H9a.75.75 0 00-.53 1.28l3 3a.75.75 0 101.06-1.06L10.8 14.988A3.752 3.752 0 0014.175 12H15a.75.75 0 000-1.5h-.825A3.733 3.733 0 0013.5 9H15a.75.75 0 000-1.5H9z" clip-rule="evenodd" />
-                          </svg>                              
-                          <h2 class="title-font font-medium text-3xl text-dark">1L+</h2>
-                          <p class="leading-relaxed text-dark font-bold">Prize Money</p>
-                      </div>
-                  </div>
-                  <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-                    <div class="border-2 border-gray-200 px-4 py-6 rounded-lg bg-gray-200 rounded-xl">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="text-dark w-20 h-20 mb-3 inline-block">
-                          <path d="M11.584 2.376a.75.75 0 01.832 0l9 6a.75.75 0 11-.832 1.248L12 3.901 3.416 9.624a.75.75 0 01-.832-1.248l9-6z" />
-                          <path fill-rule="evenodd" d="M20.25 10.332v9.918H21a.75.75 0 010 1.5H3a.75.75 0 010-1.5h.75v-9.918a.75.75 0 01.634-.74A49.109 49.109 0 0112 9c2.59 0 5.134.202 7.616.592a.75.75 0 01.634.74zm-7.5 2.418a.75.75 0 00-1.5 0v6.75a.75.75 0 001.5 0v-6.75zm3-.75a.75.75 0 01.75.75v6.75a.75.75 0 01-1.5 0v-6.75a.75.75 0 01.75-.75zM9 12.75a.75.75 0 00-1.5 0v6.75a.75.75 0 001.5 0v-6.75z" clip-rule="evenodd" />
-                          <path d="M12 7.875a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z" />
-                        </svg>                          
-                      <h2 class="title-font font-medium text-3xl text-dark">50+</h2>
-                      <p class="leading-relaxed text-dark font-bold">Colleges</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </section>
-        </div>
-
-
-        <div style="max-width: 1600px;" class="w-full py-20 mx-auto bg-white border-b-2" >
-          <div class="flex flex-col text-center w-4/5 mb-10 mx-auto">
-              <h1 class="text-4xl sm:text-5xl font-bold title-font px-20 py-3 text-black w-fit mx-auto border-b-4 border-black">Steps of Participation</h1>
+        <div id="steps" style="max-width: 1600px;" class="w-full py-20 mx-auto bg-white border-b-2" >
+          <div class="flex flex-col text-center w-4/5 mb-10 mx-auto border-b-4 border-black">
+              <h1 class="text-3xl sm:text-5xl font-bold title-font px-20 py-3 text-black w-fit md:mx-auto ">Steps of Participation</h1>
           </div>
           <section class="text-gray-600 body-font">
               <div class="container px-5 py-10 mx-auto">
@@ -399,16 +242,15 @@
 
 
 
-        <div style="max-width: 1600px;" class="w-full py-20 mx-auto bg-white border-b-2" >
-          <div class="flex flex-col text-center w-4/5 mb-10 mx-auto">
+        <div id="team" style="max-width: 1600px;" class="w-full py-20 mx-auto bg-white border-b-2 bg-gray-300" >
+          <div class="flex flex-col text-center w-full md:w-4/5 mb-10 mx-auto">
               <h1 class="text-4xl sm:text-5xl font-bold title-font px-20 py-3 text-black w-fit mx-auto border-b-4 border-black">Our Team</h1>
           </div>
           <section class="max-w-6xl mx-auto text-gray-600 body-font">
               <div class="container px-5 py-5 mx-auto">
                 <div class="flex flex-wrap -m-2">
-                  <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                      <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/80x80">
+                  <div class="p-2 lg:w-1/3 md:w-1/2 w-full ">
+                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg bg-white shadow-lg">
                       <div class="flex-grow">
                         <h2 class="text-gray-900 title-font font-medium">Holden Caulfield</h2>
                         <p class="text-gray-500">UI Designer</p>
@@ -416,77 +258,63 @@
                     </div>
                   </div>
                   <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                      <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/84x84">
+                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg bg-white shadow-lg">
                       <div class="flex-grow">
-                        <h2 class="text-gray-900 title-font font-medium">Henry Letham</h2>
-                        <p class="text-gray-500">CTO</p>
+                        <h2 class="text-gray-900 title-font font-medium">Holden Caulfield</h2>
+                        <p class="text-gray-500">UI Designer</p>
                       </div>
                     </div>
                   </div>
                   <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                      <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/88x88">
+                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg bg-white shadow-lg">
                       <div class="flex-grow">
-                        <h2 class="text-gray-900 title-font font-medium">Oskar Blinde</h2>
-                        <p class="text-gray-500">Founder</p>
+                        <h2 class="text-gray-900 title-font font-medium">Holden Caulfield</h2>
+                        <p class="text-gray-500">UI Designer</p>
                       </div>
                     </div>
                   </div>
                   <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                      <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/90x90">
+                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg bg-white shadow-lg">
                       <div class="flex-grow">
-                        <h2 class="text-gray-900 title-font font-medium">John Doe</h2>
-                        <p class="text-gray-500">DevOps</p>
+                        <h2 class="text-gray-900 title-font font-medium">Holden Caulfield</h2>
+                        <p class="text-gray-500">UI Designer</p>
                       </div>
                     </div>
                   </div>
                   <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                      <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/94x94">
+                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg bg-white shadow-lg">
                       <div class="flex-grow">
-                        <h2 class="text-gray-900 title-font font-medium">Martin Eden</h2>
-                        <p class="text-gray-500">Software Engineer</p>
+                        <h2 class="text-gray-900 title-font font-medium">Holden Caulfield</h2>
+                        <p class="text-gray-500">UI Designer</p>
                       </div>
                     </div>
                   </div>
                   <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                      <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/98x98">
+                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg bg-white shadow-lg">
                       <div class="flex-grow">
-                        <h2 class="text-gray-900 title-font font-medium">Boris Kitua</h2>
-                        <p class="text-gray-500">UX Researcher</p>
+                        <h2 class="text-gray-900 title-font font-medium">Holden Caulfield</h2>
+                        <p class="text-gray-500">UI Designer</p>
                       </div>
                     </div>
                   </div>
                   <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                      <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/100x90">
+                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg bg-white shadow-lg">
                       <div class="flex-grow">
-                        <h2 class="text-gray-900 title-font font-medium">Atticus Finch</h2>
-                        <p class="text-gray-500">QA Engineer</p>
+                        <h2 class="text-gray-900 title-font font-medium">Holden Caulfield</h2>
+                        <p class="text-gray-500">UI Designer</p>
                       </div>
                     </div>
                   </div>
                   <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                      <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/104x94">
+                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg bg-white shadow-lg">
                       <div class="flex-grow">
-                        <h2 class="text-gray-900 title-font font-medium">Alper Kamu</h2>
-                        <p class="text-gray-500">System</p>
+                        <h2 class="text-gray-900 title-font font-medium">Holden Caulfield</h2>
+                        <p class="text-gray-500">UI Designer</p>
                       </div>
                     </div>
                   </div>
-                  <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                      <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/108x98">
-                      <div class="flex-grow">
-                        <h2 class="text-gray-900 title-font font-medium">Rodrigo Monchi</h2>
-                        <p class="text-gray-500">Product Manager</p>
-                      </div>
-                    </div>
-                  </div>
+                  
+                  
                 </div>
               </div>
           </section>
@@ -640,15 +468,15 @@
 
 
           if(docViewTop+80 >= footerTop){
-            if($("#header_navbar").hasClass("bg-[#00000038]")){
-              $("#header_navbar").addClass("bg-black");
-              $("#header_navbar").removeClass("bg-[#00000038]");
+            if($("#header_navbar").hasClass("bg-transparent")){
+              $("#header_navbar").addClass("bg-white");
+              $("#header_navbar").removeClass("bg-transparent");
             }
           }
           else{
-            if(!$("#header_navbar").hasClass("bg-[#00000038]")){
-              $("#header_navbar").removeClass("bg-black");
-              $("#header_navbar").addClass("bg-[#00000038]");
+            if(!$("#header_navbar").hasClass("bg-transparent")){
+              $("#header_navbar").removeClass("bg-white");
+              $("#header_navbar").addClass("bg-transparent");
             }
           }
           
@@ -660,10 +488,10 @@
 
       $("#menuOpener").click(()=>{
           $("#MenuBar").toggle("hidden");
-          if($("#menuContainer").hasClass("bg-black")){
-            $("#menuContainer").removeClass("bg-black");
+          if($("#menuContainer").hasClass("bg-white")){
+            $("#menuContainer").removeClass("bg-white");
           }else{
-            $("#menuContainer").addClass("bg-black");
+            $("#menuContainer").addClass("bg-white");
           }
       })
 

@@ -57,6 +57,9 @@ urlpatterns = [
 
     path("my_events/", views.my_events, name="my_events"),
     path("about/", views.about_view, name="about"),
-    path("logout/", views.logout_view, name="logout"), 
+    path("logout/", views.logout_view, name="logout"),
+    path("details/<int:id>/", views.details_view, name="details_view"), 
+    path("become_host/", views.become_host, name="become_host"),
+
 
 ]

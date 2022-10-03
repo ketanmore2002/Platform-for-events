@@ -1,4 +1,3 @@
-web: gunicorn event.wsgi
-
+web: bin/start-pgbouncer-stunnel gunicorn event.wsgi
 
 
