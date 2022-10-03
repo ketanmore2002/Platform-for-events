@@ -359,14 +359,14 @@ def details_view (request,id) :
 
 @login_required(login_url='/')
 def become_host(request):
-    # user_name =  request.user.username
-    # user_id =  request.user.id
-    # if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() or host.objects.filter(user_name = user_name , user_id = user_id , status = "deactive").exists():
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() or host.objects.filter(user_name = user_name , user_id = user_id , status = "deactive").exists():
 
-    #     return redirect("/check_event")
+        return redirect("/check_event")
 
-    # else :
+    else :
 
-    #     host.objects.create(user_name = user_name , user_id = user_id , status = "deactive")
+        host.objects.create(user_name = user_name , user_id = user_id , status = "deactive")
         return render(request , 'host.html')
     
