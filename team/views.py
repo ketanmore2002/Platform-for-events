@@ -37,7 +37,7 @@ MERCHANT_ID = "ISaUZX44618363435046"
 MERCHANT_KEY = "l4hosyu56h8kd4DN"
 
 @csrf_exempt
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def pay(request,e,id,event_id):
 
 
@@ -153,7 +153,7 @@ def index (request):
     return render (request , 'landing_page.html', {"events": competitions})
     
 from django.db.models import Sum
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def adminpanel (request,id) :
 
     user_name =  request.user.username
@@ -200,7 +200,7 @@ def check_event (request):
         return HttpResponse(404)
 
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def add_event(request):
     user_name =  request.user.username
     user_id =  request.user.id
@@ -216,7 +216,7 @@ def add_event(request):
 
 
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def my_events(request):
     id = request.user.id
     name = request.user.username
@@ -230,7 +230,7 @@ def my_events(request):
 
 
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def add_Team(request):
     if request.method == "POST":
         # request.POST['number_of_members'] = int()
@@ -243,7 +243,7 @@ def add_Team(request):
             return HttpResponse('Something Went Wrong!!!')
 
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def add_Participant(request):
     if request.method == "POST":
         form = playerForm(request.POST or None)
@@ -252,29 +252,29 @@ def add_Participant(request):
             return redirect("/pay/" +"p/" + str(obj.id) + "/" + str(obj.event_id) + "/")
 
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def dashboard (request):
 
     return render (request,'dashboard.html')
 
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def participants_details (request):
     
     return render (request , 'participants_details.html')
     
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def participation_form (request,id) :
     data = events.objects.filter(id=id)[0]
     return render (request, 'participation_form.html', {"event": data})
     
      
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def register_option (request):
     return render (request,'register_option.html')
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def api_teams (request):
     user_name =  request.user.username
     user_id =  request.user.id
@@ -285,7 +285,7 @@ def api_teams (request):
     else:
             return HttpResponse('Something Went Wrong!!!')
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def api_players (request):
     user_name =  request.user.username
     user_id =  request.user.id
@@ -296,7 +296,7 @@ def api_players (request):
     else:
             return HttpResponse('Something Went Wrong!!!')
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def single_team (request, team_id):
     user_name =  request.user.username
     user_id =  request.user.id
@@ -308,7 +308,7 @@ def single_team (request, team_id):
     else:
             return HttpResponse('Something Went Wrong!!!')
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def single_player (request, player_id):
     user_name =  request.user.username
     user_id =  request.user.id
@@ -321,7 +321,7 @@ def single_player (request, player_id):
 
 
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def api_events (request):
     user_name =  request.user.username
     user_id =  request.user.id
@@ -333,7 +333,7 @@ def api_events (request):
             return HttpResponse('Something Went Wrong!!!')
 
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def api_events_id (request,id):
     user_name =  request.user.username
     user_id =  request.user.id
@@ -352,7 +352,7 @@ def event_info (request):
     return render (request,'register_option.html', {"events": data})
 
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def event_details (request):
     user_name =  request.user.username
     user_id =  request.user.id
@@ -363,7 +363,7 @@ def event_details (request):
             return HttpResponse('Something Went Wrong!!!')
 
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def cout_data (request):
     user_name =  request.user.username
     user_id =  request.user.id
@@ -374,7 +374,7 @@ def cout_data (request):
             return HttpResponse('Something Went Wrong!!!')
 
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def data_number (request, number):
     user_name =  request.user.username
     user_id =  request.user.id
@@ -388,7 +388,7 @@ def data_number (request, number):
             return HttpResponse('Something Went Wrong!!!')
 
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def unpaid_cout_data (request):
     user_name =  request.user.username
     user_id =  request.user.id
@@ -399,7 +399,7 @@ def unpaid_cout_data (request):
             return HttpResponse('Something Went Wrong!!!')
 
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def unpaid_data_number (request, number):
     user_name =  request.user.username
     user_id =  request.user.id
@@ -412,7 +412,7 @@ def unpaid_data_number (request, number):
 
 from django.contrib.auth import logout
 
-@login_required(login_url='/')  # redirect when user is not logged in
+@login_required(login_url='/temp_login')  # redirect when user is not logged in
 def logout_view(request):
 
     logout(request)
@@ -444,6 +444,7 @@ def become_host(request):
         host.objects.create(user_name = user_name , user_id = user_id , status = "deactive")
         return render(request , 'host.html')
     
+
 
 def temp_login(request):
     return render(request , 'login_temp.html')
