@@ -98,10 +98,10 @@ def pay(request,e,id,event_id):
 def check_host (request):
     user_name =  request.user.username
     user_id =  request.user.id
-    if host.objects.filter(host_user_name = user_name , host_user_id = user_id , status = "active").exists() :
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
         return ("True")
     else :
-        return False
+        return ("False")
 
 
 
@@ -190,8 +190,9 @@ def adminpanel (request,id) :
     return render (request, 'adminpanel.html', {"data": data, "unpaid_data": unpaid_data, "event_name": event_name, "event_desc": event_desc, "event_type": event_type, "total_users": total_users, "event_paid_participant": current_event_paticipants, "total_amount": total_amount, "unpaid_users": current_event_paticipants_unpaid})
 
 def check_event (request):
-    print (check_host)
-    if check_host == True :
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
         userID = request.user.id
         data = events.objects.all().filter(host_user_id=str(userID))
         return render (request,'check_event.html', {"events": data})
@@ -201,12 +202,17 @@ def check_event (request):
 
 @login_required(login_url='/')
 def add_event(request):
-    form = eventsForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-    userID = request.user.id
-    data = events.objects.all().filter(host_user_id=str(userID))
-    return render (request,'check_event.html', {"events": data})
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
+        form = eventsForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+        userID = request.user.id
+        data = events.objects.all().filter(host_user_id=str(userID))
+        return render (request,'check_event.html', {"events": data})
+    else :
+        return HttpResponse(404)
 
 
 
@@ -257,7 +263,7 @@ def participants_details (request):
     
     return render (request , 'participants_details.html')
     
-
+@login_required(login_url='/')
 def participation_form (request,id) :
     data = events.objects.filter(id=id)[0]
     return render (request, 'participation_form.html', {"event": data})
@@ -270,47 +276,77 @@ def register_option (request):
 
 @login_required(login_url='/')
 def api_teams (request):
-    data = teams.objects.all()
-    qs_json = serializers.serialize('json', data)
-    return HttpResponse(qs_json, content_type='application/json')
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
+        data = teams.objects.all()
+        qs_json = serializers.serialize('json', data)
+        return HttpResponse(qs_json, content_type='application/json')
+    else:
+            return HttpResponse('Something Went Wrong!!!')
 
 @login_required(login_url='/')
 def api_players (request):
-    data = player.objects.all()
-    qs_json = serializers.serialize('json', data)
-    return HttpResponse(qs_json, content_type='application/json')
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
+        data = player.objects.all()
+        qs_json = serializers.serialize('json', data)
+        return HttpResponse(qs_json, content_type='application/json')
+    else:
+            return HttpResponse('Something Went Wrong!!!')
 
 @login_required(login_url='/')
 def single_team (request, team_id):
-    data = teams.objects.all().filter(id=team_id)
-    qs_json = serializers.serialize('json', data)
-    return HttpResponse(qs_json, content_type='application/json')
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
+        data = player.objects.all()
+        data = teams.objects.all().filter(id=team_id)
+        qs_json = serializers.serialize('json', data)
+        return HttpResponse(qs_json, content_type='application/json')
+    else:
+            return HttpResponse('Something Went Wrong!!!')
 
 @login_required(login_url='/')
 def single_player (request, player_id):
-    data = player.objects.all().filter(id= player_id)
-    qs_json = serializers.serialize('json', data)
-    return HttpResponse(qs_json, content_type='application/json')
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
+        data = player.objects.all().filter(id= player_id)
+        qs_json = serializers.serialize('json', data)
+        return HttpResponse(qs_json, content_type='application/json')
+    else:
+            return HttpResponse('Something Went Wrong!!!')
 
 
 
 @login_required(login_url='/')
 def api_events (request):
-    data = events.objects.all()
-    qs_json = serializers.serialize('json', data)
-    return HttpResponse(qs_json, content_type='application/json')
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
+        data = events.objects.all()
+        qs_json = serializers.serialize('json', data)
+        return HttpResponse(qs_json, content_type='application/json')
+    else:
+            return HttpResponse('Something Went Wrong!!!')
 
 
 @login_required(login_url='/')
 def api_events_id (request,id):
-    data = events.objects.filter(id = id)
-    qs_json = serializers.serialize('json', data)
-    return HttpResponse(qs_json, content_type='application/json')
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
+        data = events.objects.filter(id = id)
+        qs_json = serializers.serialize('json', data)
+        return HttpResponse(qs_json, content_type='application/json')
+    else:
+            return HttpResponse('Something Went Wrong!!!')
 
 
 
 
-@login_required(login_url='/')
 def event_info (request):
     data = events.objects.all()
     return render (request,'register_option.html', {"events": data})
@@ -318,39 +354,61 @@ def event_info (request):
 
 @login_required(login_url='/')
 def event_details (request):
-    data = events.objects.filter(host_user_name = request.user.username , host_user_id = request.user.id)
-    return render (request,'event_detail.html')
-
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
+        data = events.objects.filter(host_user_name = request.user.username , host_user_id = request.user.id)
+        return render (request,'event_detail.html')
+    else:
+            return HttpResponse('Something Went Wrong!!!')
 
 
 @login_required(login_url='/')
 def cout_data (request):
-    obj = teams.objects.all().filter(payment_status="paid").count()
-    return HttpResponse(obj)
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
+        obj = teams.objects.all().filter(payment_status="paid").count()
+        return HttpResponse(obj)
+    else:
+            return HttpResponse('Something Went Wrong!!!')
 
 
 @login_required(login_url='/')
 def data_number (request, number):
-    # num = request.POST["num"]
-    data = teams.objects.all().filter(payment_status="paid").order_by("-id")[:number][::-1]
-    # data = Agreement_Orders.objects.all().filter(payment_status="paid")[:number]
-    qs_json = serializers.serialize('json', data)
-    return HttpResponse(qs_json, content_type='application/json')
-
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
+        # num = request.POST["num"]
+        data = teams.objects.all().filter(payment_status="paid").order_by("-id")[:number][::-1]
+        # data = Agreement_Orders.objects.all().filter(payment_status="paid")[:number]
+        qs_json = serializers.serialize('json', data)
+        return HttpResponse(qs_json, content_type='application/json')
+    else:
+            return HttpResponse('Something Went Wrong!!!')
 
 
 @login_required(login_url='/')
 def unpaid_cout_data (request):
-    obj = teams.objects.all().filter(payment_status="unpaid").count()
-    return HttpResponse(obj)
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
+        obj = teams.objects.all().filter(payment_status="unpaid").count()
+        return HttpResponse(obj)
+    else:
+            return HttpResponse('Something Went Wrong!!!')
 
 
 @login_required(login_url='/')
 def unpaid_data_number (request, number):
-    data = teams.objects.all().filter(payment_status="unpaid").order_by("-id")[:number][::-1]
-    qs_json = serializers.serialize('json', data)
-    return HttpResponse(qs_json, content_type='application/json')
-
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
+        data = teams.objects.all().filter(payment_status="unpaid").order_by("-id")[:number][::-1]
+        qs_json = serializers.serialize('json', data)
+        return HttpResponse(qs_json, content_type='application/json')
+    else:
+            return HttpResponse('Something Went Wrong!!!')
 
 from django.contrib.auth import logout
 
