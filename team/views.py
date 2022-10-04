@@ -159,7 +159,7 @@ def adminpanel (request,id) :
     user_name =  request.user.username
     user_id =  request.user.id
     # total_users = teams.objects.all().count() + player.objects.all().count()
-    total_users = player.objects.all().count() + teams.objects.aggregate(Sum('number_of_members'))["number_of_members__sum"]
+    # total_users = player.objects.all().count() + teams.objects.aggregate(Sum('number_of_members'))["number_of_members__sum"]
 
 
 
@@ -187,7 +187,7 @@ def adminpanel (request,id) :
 
             total_amount = current_event_paticipants * event.event_fee
 
-    return render (request, 'adminpanel.html', {"data": data, "unpaid_data": unpaid_data, "event_name": event_name, "event_desc": event_desc, "event_type": event_type, "total_users": total_users, "event_paid_participant": current_event_paticipants, "total_amount": total_amount, "unpaid_users": current_event_paticipants_unpaid})
+    return render (request, 'adminpanel.html', {"data": data, "unpaid_data": unpaid_data, "event_name": event_name, "event_desc": event_desc, "event_type": event_type, "total_users": "total_users", "event_paid_participant": current_event_paticipants, "total_amount": total_amount, "unpaid_users": current_event_paticipants_unpaid})
 
 def check_event (request):
     user_name =  request.user.username
