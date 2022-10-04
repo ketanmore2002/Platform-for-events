@@ -60,6 +60,8 @@ urlpatterns = [
     path("logout/", views.logout_view, name="logout"),
     path("details/<int:id>/", views.details_view, name="details_view"), 
     path("become_host/", views.become_host, name="become_host"),
+    path("temp_login/", views.temp_login, name="temp_login"),
+
 
 
 ]

@@ -357,12 +357,15 @@ def details_view (request,id) :
     return render (request, "details.html" ,{"event" : data})
 
 
-@login_required(login_url='/')
+@login_required(login_url='/temp_login')
 def become_host(request):
     user_name =  request.user.username
     user_id =  request.user.id
-    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() or host.objects.filter(user_name = user_name , user_id = user_id , status = "deactive").exists():
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "deactive").exists():
 
+        return render(request , 'host.html')
+
+    elif host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
         return redirect("/check_event")
 
     else :
@@ -370,3 +373,6 @@ def become_host(request):
         host.objects.create(user_name = user_name , user_id = user_id , status = "deactive")
         return render(request , 'host.html')
     
+
+def temp_login(request):
+    return render(request , 'login_temp.html')
