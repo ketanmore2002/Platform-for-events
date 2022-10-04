@@ -32,7 +32,8 @@ class events(models.Model):
     closing_event_date = models.CharField(max_length=300,blank=True,null=True)
     event_date = models.CharField(max_length=300,blank=True,null=True)
     event_venue = models.CharField(max_length=1000,blank=True,null=True)
-    number_of_members_allowed = models.CharField(max_length=300,blank=True,null=True, default="1") 
+    number_of_members_allowed = models.CharField(max_length=300,blank=True,null=True, default="1")
+    total_number_of_members_allowed = models.CharField(max_length=300,blank=True,null=True, default="1") 
     type_of_event = models.CharField(max_length=30,blank=True,null=True) 
     rules = models.TextField(blank=True,null=True)
     discription = models.TextField(blank=True,null=True) 
@@ -41,6 +42,7 @@ class events(models.Model):
     first_prize = models.CharField(max_length=300,blank=True,null=True)
     second_prize = models.CharField(max_length=300,blank=True,null=True)
     third_prize = models.CharField(max_length=300,blank=True,null=True)
+    current_members_in_event = models.IntegerField(blank=True,null=True)
     
 
     def __str__(self):

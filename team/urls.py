@@ -61,7 +61,8 @@ urlpatterns = [
     path("details/<int:id>/", views.details_view, name="details_view"), 
     path("become_host/", views.become_host, name="become_host"),
     path("temp_login/", views.temp_login, name="temp_login"),
-
-
-
+    path("delete_event/<int:id>/", views.delete_event, name="delete_event"),
+    path("csv/player/", views.getfile_player, name="getfile_player"),
+    path("csv/teams/", views.getfile_team, name="getfile_team"),
+   
 ]

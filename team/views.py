@@ -13,7 +13,10 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseBadRequest
 from django.http import HttpResponse
 
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required 
+from django.contrib.admin.views.decorators import staff_member_required
+
+
 
 from django.core import serializers
 
@@ -124,11 +127,14 @@ def paymenthandler(request, e, id, event_id) :
             print(2)
 
             if e == "t" :
-            
+                
+                members = events.objects.get(event_id=event_id)
+                members.current_members_in_event += 1
                 teams.objects.filter(id=id).update(payment_status="paid")
 
             elif e == "p" :
-
+                members = events.objects.get(event_id=event_id)
+                members.current_members_in_event += 1
                 player.objects.filter(id=id).update(payment_status="paid")
             
             # return render(request, 'order_successful.html', {'id': id})
@@ -448,3 +454,46 @@ def become_host(request):
 
 def temp_login(request):
     return render(request , 'login_temp.html')
+
+
+
+def delete_event (request,id):
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
+        events.objects.get(id=id).delete()
+        player.objects.filter(event_id = id).delete()
+        teams.objects.filter(event_id = id).delete()
+        return redirect("/")
+    else:
+            return HttpResponse('Something Went Wrong!!!')
+
+
+
+
+import csv
+# @login_required(login_url='/')
+@staff_member_required(login_url="/temp_login")
+def getfile_player(request):  
+    response = HttpResponse(content_type='text/csv')  
+    response['Content-Disposition'] = 'attachment; filename="docs.csv"'  
+    orders_db = player.objects.all()  
+    writer = csv.writer(response)  
+    for order in orders_db:  
+        writer.writerow([order.player_name, order.player_user_name,order.player_email, order.player_phone_number, order.event_participated, order.event_id, order.college_name, order.payment_status])  
+    return response  
+
+
+
+
+import csv
+# @login_required(login_url='/')
+@staff_member_required(login_url="/temp_login")
+def getfile_team(request):  
+    response = HttpResponse(content_type='text/csv')  
+    response['Content-Disposition'] = 'attachment; filename="docs.csv"'  
+    orders_db = teams.objects.all()  
+    writer = csv.writer(response)  
+    for order in orders_db:  
+        writer.writerow([order.team_name, order.number_of_members,order.name_of_members, order.event_participated, order.leader, order.leader_user_name, order.leader_phone_number, order.leader_user_id, order.leader_email, order.event_id, order.college_name, order.payment_status])  
+    return response
