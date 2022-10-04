@@ -99,7 +99,7 @@ def check_host (request):
     user_name =  request.user.username
     user_id =  request.user.id
     if host.objects.filter(host_user_name = user_name , host_user_id = user_id , status = "active").exists() :
-        return True
+        return ("True")
     else :
         return False
 
