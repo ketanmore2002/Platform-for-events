@@ -95,6 +95,15 @@ def pay(request,e,id,event_id):
 
 
 
+def check_host (request):
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(host_user_name = user_name , host_user_id = user_id , status = "active").exists() :
+        return True
+    else :
+        return False
+
+
 
 
 @csrf_exempt
@@ -181,9 +190,13 @@ def adminpanel (request,id) :
     return render (request, 'adminpanel.html', {"data": data, "unpaid_data": unpaid_data, "event_name": event_name, "event_desc": event_desc, "event_type": event_type, "total_users": total_users, "event_paid_participant": current_event_paticipants, "total_amount": total_amount, "unpaid_users": current_event_paticipants_unpaid})
 
 def check_event (request):
-    userID = request.user.id
-    data = events.objects.all().filter(host_user_id=str(userID))
-    return render (request,'check_event.html', {"events": data})
+    print (check_host)
+    if check_host == True :
+        userID = request.user.id
+        data = events.objects.all().filter(host_user_id=str(userID))
+        return render (request,'check_event.html', {"events": data})
+    else :
+        return HttpResponse(404)
 
 
 @login_required(login_url='/')
