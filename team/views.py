@@ -238,13 +238,14 @@ def add_event(request):
 def my_events(request):
     id = request.user.id
     name = request.user.username
-    email = request.user.email
-    obj = events.objects.all().filter(host_user_name=name, host_user_id=id).exists()
-    if obj:
+    # email = request.user.email
+    if host.objects.filter(user_name = name , user_id = id , status = "active").exists() :
         return redirect("/check_event/")
-    
-    eventlist = events.objects.all().filter(host_user_id = id)
-    return render(request, "my_events.html", {"events": eventlist})
+    else :
+        eventlistplayers = teams.objects.all().filter(leader_user_id = id,leader_user_name = name)
+        eventlistteams = teams.objects.all().filter(player_user_id = id,player_user_name = name)
+        return render(request, "my_events.html", {"eventlistplayers": eventlistplayers,"eventlistteams":eventlistteams})
+
 
 
 

@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 class host (models.Model):
     user_name = models.CharField(max_length=300,blank=True,null=True) 
     user_id = models.CharField(max_length=300,blank=True,null=True) 
-    user_email = models.CharField(max_length=300,blank=True,null=True)
+    # user_email = models.CharField(max_length=300,blank=True,null=True)
     status = models.CharField(max_length=300,blank=True,null=True)
 
 
