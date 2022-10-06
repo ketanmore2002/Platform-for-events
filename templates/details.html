@@ -49,13 +49,13 @@
 <section id="detailsPage" class="text-gray-600 body-font py-20" style="padding-top: 80px">
       
     <div class="container-fluid px-5 py-10 mx-auto flex flex-col">
-        <button class="" onclick="window.history.back()">
+        {% comment %} <button class="" onclick="window.history.back()">
           <div id="closeDetailPage" class="mb-5" style="cursor: pointer;">
             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
               <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
             </svg>
           </div>
-        </button>
+        </button> {% endcomment %}
         <div class="rounded-lg h-96 overflow-hidden relative">
             <img id="poster_url" alt="content" class="object-cover object-center h-full w-full" src="https://img.freepik.com/free-vector/green-sand-paper_53876-86281.jpg?w=1060&t=st=1664517849~exp=1664518449~hmac=52aa99881012fefe313bc1b06e3d66c72d1a517bb375fab7a6f55fc783593d98">
 
@@ -91,21 +91,21 @@
                     <div class="w-full flex items-center justify-center mt-4 pb-2 border-b-2">
                       <div class="flex items-center justify-between w-4/5 mx-auto">
                         <img class="w-12 h-100" src="https://cdn-icons-png.flaticon.com/512/4692/4692383.png" alt="prize">
-                        <h2 class="w-36 font-medium title-font  text-gray-900 text-xl" id="first_prize" >{{ event.first_prize }}</h2>
+                        <h2 class="w-36 font-medium title-font  text-gray-900 text-xl" id="first_prize" >{{ event.first_prize }} Rs.</h2>
                       </div>
                     </div>
 
                     <div class="w-full flex items-center justify-center mt-4 pb-2 border-b-2">
                       <div class="flex items-center justify-between w-4/5 mx-auto">
                         <img class="w-12 h-100" src="https://cdn-icons-png.flaticon.com/512/4692/4692385.png" alt="prize">
-                        <h2 class="w-36 font-medium title-font  text-gray-900 text-xl" id="second_prize">{{ event.second_prize }}</h2>
+                        <h2 class="w-36 font-medium title-font  text-gray-900 text-xl" id="second_prize">{{ event.second_prize }} Rs.</h2>
                       </div>
                     </div>
 
                     <div class="w-full flex items-center justify-center mt-4 pb-2 border-b-2">
                       <div class="flex items-center justify-between w-4/5 mx-auto">
                         <img class="w-12 h-100" src="https://cdn-icons-png.flaticon.com/512/4692/4692387.png" alt="prize">
-                        <h2 class="w-36 font-medium title-font  text-gray-900 text-xl" id="third_prize">{{ event.third_prize }}</h2>
+                        <h2 class="w-36 font-medium title-font  text-gray-900 text-xl" id="third_prize">{{ event.third_prize }} Rs.</h2>
                       </div>
                     </div>
 
@@ -116,14 +116,28 @@
             <div class="lg:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
 
                 <div class="flex flex-col items-center justify-center">
+
+                    {% if remaining <= 5 %}
+                      <div class="w-full px-8 py-4 mb-4 bg-red-200 rounded">
+                        <p><b>Note: </b> Last {{ remaining }} remaining.</p>
+                      </div>
+                    {% endif %}
+                    {% if remaining == 0 %}
+                      <div class="w-full px-8 py-4 mb-4 bg-red-200 rounded">
+                        <p><b>Note: </b>  Maximum number of participant limit reached !</p>
+                      </div>
+                    {% endif %}
+                    
                     <div class="w-full flex items-end justify-between pb-2 border-b-2">
                         <div class="flex items-center gap-5">
                           <h2 class="font-medium title-font text-gray-900 text-xl" style="color: black;">Event Date : </h2>
                           <span class=" leading-relaxed text-lg text-left text-gray-500" id="event_date">{{ event.event_date }}</span>
                         </div>
+                        {% if remaining > 0 %}
                         <div class="flex items-center gap-5">
                           <a href="/participation_form/{{ event.pk }}" id="redirectBtn" class="text-white bg-indigo-500 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Register</a>
                         </div>
+                        {% endif %}
                     </div>
 
                     <div class="w-full mt-4 pb-2 border-b-2">

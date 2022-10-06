@@ -122,20 +122,23 @@ def paymenthandler(request, e, id, event_id) :
     verify = Checksum.verify_checksum(response_dict, MERCHANT_KEY, checksum)
 
     if verify:
-        print(1)
+        # print(1)
         if response_dict['RESPCODE'] == '01':
-            print(2)
+            # print(2)
 
             if e == "t" :
                 
-                members = events.objects.get(event_id=event_id)
-                members.current_members_in_event += 1
                 teams.objects.filter(id=id).update(payment_status="paid")
+                members = events.objects.get(event_id=event_id)
+                teamx = teams.objects.get(id=id)
+                members.current_members_in_event += int(teamx.number_of_members)
+                members.save()
 
             elif e == "p" :
+                player.objects.filter(id=id).update(payment_status="paid")
                 members = events.objects.get(event_id=event_id)
                 members.current_members_in_event += 1
-                player.objects.filter(id=id).update(payment_status="paid")
+                members.save()
             
             # return render(request, 'order_successful.html', {'id': id})
             return HttpResponse(True)
@@ -155,8 +158,17 @@ def paymenthandler(request, e, id, event_id) :
 
 
 def index (request):
-    competitions = events.objects.all()
-    return render (request , 'landing_page.html', {"events": competitions})
+    competitions = events.objects.all()[0:2]
+    if request.user.is_authenticated:
+        user_name =  request.user.username
+        user_id =  request.user.id
+        if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
+            data = True
+        else :
+            data = False
+    else :
+        data = False
+    return render (request , 'landing_page.html', {"events": competitions,"data":data})
     
 from django.db.models import Sum
 @login_required(login_url='/temp_login')
@@ -165,7 +177,7 @@ def adminpanel (request,id) :
     user_name =  request.user.username
     user_id =  request.user.id
     # total_users = teams.objects.all().count() + player.objects.all().count()
-    # total_users = player.objects.all().count() + teams.objects.aggregate(Sum('number_of_members'))["number_of_members__sum"]
+    total_users = player.objects.all().count() + teams.objects.aggregate(Sum('number_of_members'))["number_of_members__sum"]
 
 
 
@@ -193,7 +205,7 @@ def adminpanel (request,id) :
 
             total_amount = current_event_paticipants * event.event_fee
 
-    return render (request, 'adminpanel.html', {"data": data, "unpaid_data": unpaid_data, "event_name": event_name, "event_desc": event_desc, "event_type": event_type, "total_users": "total_users", "event_paid_participant": current_event_paticipants, "total_amount": total_amount, "unpaid_users": current_event_paticipants_unpaid})
+    return render (request, 'adminpanel.html', {"data": data,"event_id": id, "unpaid_data": unpaid_data, "event_name": event_name, "event_desc": event_desc, "event_type": event_type, "total_users": total_users, "event_paid_participant": current_event_paticipants, "total_amount": total_amount, "unpaid_users": current_event_paticipants_unpaid})
 
 def check_event (request):
     user_name =  request.user.username
@@ -241,7 +253,6 @@ def add_Team(request):
     if request.method == "POST":
         # request.POST['number_of_members'] = int()
         form = teamsForm(request.POST or None)
-        print(form)
         if form.is_valid():
             obj = form.save()
             return redirect("/pay/" +"t/" + str(obj.id) + "/" + str(obj.event_id) + "/")
@@ -431,7 +442,8 @@ def about_view(request):
 
 def details_view (request,id) :    
     data = events.objects.filter(id=id)[0]
-    return render (request, "details.html" ,{"event" : data})
+    remaining = int(data.number_of_members_allowed_in_event) - int(data.current_members_in_event)
+    return render (request, "details.html" ,{"event" : data, "remaining":remaining})
 
 
 @login_required(login_url='/temp_login')
