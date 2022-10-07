@@ -42,8 +42,8 @@ urlpatterns = [
     path("unpaid_data_number/<int:number>/", views.unpaid_data_number, name="unpaid_data_number"),
 
 
-    path("cout_data/", views.cout_data, name="cout_data"),
-    path("data_number/<int:number>/", views.data_number, name="data_number"),
+    path("cout_data/<str:id>/", views.cout_data, name="cout_data"),
+    path("data_number/<int:number>/<str:id>/", views.data_number, name="data_number"),
 
     path("unpaid_cout_data/", views.unpaid_cout_data, name="unpaid_cout_data"),
 
@@ -64,5 +64,7 @@ urlpatterns = [
     path("delete_event/<int:id>/", views.delete_event, name="delete_event"),
     path("csv/player/", views.getfile_player, name="getfile_player"),
     path("csv/teams/", views.getfile_team, name="getfile_team"),
+    path("change_id/<int:id>/", views.change_id, name="change_id"),
+
    
 ]

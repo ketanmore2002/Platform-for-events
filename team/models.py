@@ -44,8 +44,8 @@ class events(models.Model):
     third_prize = models.CharField(max_length=300,blank=True,null=True)
     current_members_in_event = models.IntegerField(blank=True,null=True, default=0) #current
     number_of_members_allowed_in_event = models.IntegerField(blank=True,null=True, default=0)#event
-    entry = models.CharField(max_length=300,blank=True,null=True, default="1")
-    rank = models.CharField(max_length=300,blank=True,null=True)
+    entry = models.CharField(max_length=300,blank=True,null=True, default="active")
+    rank = models.CharField(max_length=300,blank=True,null=True, default="1")
 
 
 

@@ -58,6 +58,17 @@
         /* visibility: hidden; */
       }
      }
+
+     /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
    </style>
 
     <!-- Tailwind -->
@@ -83,7 +94,7 @@
 <body>
     <div class="w-full">
 
-      <header id="header_navbar" style="max-width: 2000px; top: 0; left: 50%; transform: translate(-50%, 0); z-index: 999;" class="fixed top-0 left-50 w-full text-white body-font mx-auto mb-2 mx-auto bg-gray-200">
+      <header id="header_navbar" style="max-width: 2000px; top: 0; left: 50%; transform: translate(-50%, 0); z-index: 999;" class="fixed top-0 left-50 w-full text-white body-font mx-auto mb-2 mx-auto bg-white">
         <div id="menuContainer" class="lg:container mx-auto block lg:flex  p-5 items-center justify-between">
           <div id="smallNavbar" class="flex lg:block items-center justify-between lg:w-fit w-full h-fit">
             <a class="flex title-font font-medium items-center text-white">

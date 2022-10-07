@@ -82,6 +82,7 @@ function loadUnpaid_Agree(){
 
 
 function detail_page_info(participant_id){
+
     $("#spinner").removeClass("d-none");
     $("#spinner").addClass("d-flex");
 
@@ -104,7 +105,7 @@ function detail_page_info(participant_id){
             id = data.pk;
             info = data[0].fields
 
-            $("#team_name").text(info.event_participated);
+            $("#team_name").text(info.team_name);
             $("#team_member_no").text(info.number_of_members);
             $("#team_leader").text(info.leader);
 
@@ -190,19 +191,20 @@ function get_teams(){
     CURRENT_AGREEMENT_NUMBER = $("#participant-table tr").length;
     let TOTAL_AGREEMENT_NUMBER = 0;
 
-    $.get("/cout_data/", function(data, status, xhr){
+    const this_event_id = $("#this_event_id").val()
+    let cout_url = "/cout_data/"+ this_event_id + "/";
+    
+    $.get(cout_url, function(data, status, xhr){
         if(status == "success"){
             TOTAL_AGREEMENT_NUMBER = parseInt(data);
 
             let MISSING_AGREEMENTS = TOTAL_AGREEMENT_NUMBER - CURRENT_AGREEMENT_NUMBER;
-
+            
             if(MISSING_AGREEMENTS > 0){
-
                 clearInterval(myinterval);
-                let url = "/data_number/" + MISSING_AGREEMENTS + "/"
+                let url = "/data_number/" + MISSING_AGREEMENTS + "/" + this_event_id + "/";
                 $.get(url, (data, status)=>{
                     if(status == "success"){
-                        console.log(data[0].fields);
                         data.forEach(team => {
                             let child = `<tr>
                                             <td>${ team.pk }</td>
@@ -233,8 +235,6 @@ function get_teams(){
 }
 
 myinterval = setInterval(get_teams, 6000);
-
-
 
 
 

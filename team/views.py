@@ -179,8 +179,6 @@ def adminpanel (request,id) :
     # total_users = teams.objects.all().count() + player.objects.all().count()
     total_users = player.objects.all().count() + teams.objects.aggregate(Sum('number_of_members'))["number_of_members__sum"]
 
-
-
     if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
 
         if events.objects.filter(id=id,host_user_name = user_name , host_user_id = user_id).exists() :
@@ -189,23 +187,25 @@ def adminpanel (request,id) :
             event_name = event.event_name
             event_desc = event.discription
             event_type = event.type_of_event
-
+            entry = event.entry
     
 
             if event.type_of_event == "Team":
-                data = teams.objects.all().filter(event_id = id, event_participated = event_name ,payment_status="paid")[::-1]
+                data = teams.objects.filter(event_id = id, event_participated = event_name ,payment_status="paid")[::-1]
                 current_event_paticipants = len(data)
                 unpaid_data = teams.objects.all().filter(event_id = id,event_participated = event_name, payment_status="unpaid")[::-1]
                 current_event_paticipants_unpaid = len(unpaid_data)
+                
             else:
-                data = player.objects.all().filter(payment_status="paid")[::-1]
+                data = player.objects.filter(event_id = id, event_participated = event_name ,payment_status="paid")[::-1]
                 current_event_paticipants = len(data)
                 unpaid_data = player.objects.all().filter(payment_status="unpaid")[::-1]
                 current_event_paticipants_unpaid = len(unpaid_data)
 
             total_amount = current_event_paticipants * event.event_fee
-
-    return render (request, 'adminpanel.html', {"data": data,"event_id": id, "unpaid_data": unpaid_data, "event_name": event_name, "event_desc": event_desc, "event_type": event_type, "total_users": total_users, "event_paid_participant": current_event_paticipants, "total_amount": total_amount, "unpaid_users": current_event_paticipants_unpaid})
+            
+        return render (request, 'adminpanel.html', {"data": data,"event_id": id, "unpaid_data": unpaid_data, "event_name": event_name, "event_desc": event_desc, "event_type": event_type, "total_users": total_users, "event_paid_participant": current_event_paticipants, "total_amount": total_amount, "unpaid_users": current_event_paticipants_unpaid ,"entry" : entry})
+    return HttpResponse(404)
 
 def check_event (request):
     user_name =  request.user.username
@@ -243,7 +243,7 @@ def my_events(request):
         return redirect("/check_event/")
     else :
         eventlistplayers = teams.objects.all().filter(leader_user_id = id,leader_user_name = name)
-        eventlistteams = player.objects.all().filter(player_user_id = id,player_user_name = name)
+        eventlistteams = teams.objects.all().filter(player_user_id = id,player_user_name = name)
         return render(request, "my_events.html", {"eventlistplayers": eventlistplayers,"eventlistteams":eventlistteams})
 
 
@@ -319,7 +319,7 @@ def single_team (request, team_id):
     user_name =  request.user.username
     user_id =  request.user.id
     if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
-        data = player.objects.all()
+        
         data = teams.objects.all().filter(id=team_id)
         qs_json = serializers.serialize('json', data)
         return HttpResponse(qs_json, content_type='application/json')
@@ -382,24 +382,24 @@ def event_details (request):
 
 
 @login_required(login_url='/temp_login')
-def cout_data (request):
+def cout_data (request, id):
     user_name =  request.user.username
     user_id =  request.user.id
     if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
-        obj = teams.objects.all().filter(payment_status="paid").count()
+        obj = teams.objects.all().filter(payment_status="paid", event_id = id).count()
         return HttpResponse(obj)
     else:
             return HttpResponse('Something Went Wrong!!!')
 
 
 @login_required(login_url='/temp_login')
-def data_number (request, number):
+def data_number (request, number,id):
     user_name =  request.user.username
     user_id =  request.user.id
     if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
-        # num = request.POST["num"]
-        data = teams.objects.all().filter(payment_status="paid").order_by("-id")[:number][::-1]
-        # data = Agreement_Orders.objects.all().filter(payment_status="paid")[:number]
+
+        data = teams.objects.all().filter(payment_status="paid",event_id = id).order_by("-id")[:number][::-1]
+    
         qs_json = serializers.serialize('json', data)
         return HttpResponse(qs_json, content_type='application/json')
     else:
@@ -510,3 +510,31 @@ def getfile_team(request):
     for order in orders_db:  
         writer.writerow([order.team_name, order.number_of_members,order.name_of_members, order.event_participated, order.leader, order.leader_user_name, order.leader_phone_number, order.leader_user_id, order.leader_email, order.event_id, order.college_name, order.payment_status])  
     return response
+
+
+
+def change_id (request,id):
+
+    user_name =  request.user.username
+    user_id =  request.user.id
+    if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
+
+        if events.objects.filter(id=id,host_user_name = user_name , host_user_id = user_id).exists() :
+            if request.method == "POST" :
+                data = events.objects.filter(id = id)[0]
+
+                if data.entry == "active":
+                    events.objects.filter(id = id).update(entry = "deactive")
+                    return HttpResponse("successful")
+                elif data.entry == "deactive":
+                    events.objects.filter(id = id).update(entry = "active")
+                    return HttpResponse("successful")
+                else :
+                    return HttpResponse(404)
+            else :
+                  return HttpResponse(404)
+
+        else :
+                return HttpResponse(404)
+    else :
+          return HttpResponse(404)

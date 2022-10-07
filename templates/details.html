@@ -133,7 +133,7 @@
                           <h2 class="font-medium title-font text-gray-900 text-xl" style="color: black;">Event Date : </h2>
                           <span class=" leading-relaxed text-lg text-left text-gray-500" id="event_date">{{ event.event_date }}</span>
                         </div>
-                        {% if remaining > 0 %}
+                        {% if remaining > 0 and event.entry == "active" %}
                         <div class="flex items-center gap-5">
                           <a href="/participation_form/{{ event.pk }}" id="redirectBtn" class="text-white bg-indigo-500 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Register</a>
                         </div>
