@@ -243,7 +243,7 @@ def my_events(request):
         return redirect("/check_event/")
     else :
         eventlistplayers = teams.objects.all().filter(leader_user_id = id,leader_user_name = name)
-        eventlistteams = teams.objects.all().filter(player_user_id = id,player_user_name = name)
+        eventlistteams = player.objects.all().filter(player_user_id = id,player_user_name = name)
         return render(request, "my_events.html", {"eventlistplayers": eventlistplayers,"eventlistteams":eventlistteams})
 
 
