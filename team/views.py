@@ -158,7 +158,7 @@ def paymenthandler(request, e, id, event_id) :
 
 
 def index (request):
-    competitions = events.objects.all()[0:2]
+    competitions = events.objects.all()[0:3]
     if request.user.is_authenticated:
         user_name =  request.user.username
         user_id =  request.user.id

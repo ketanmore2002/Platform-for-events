@@ -472,7 +472,7 @@
           loop
           style="pointer-events: none; z-index: 10;"
           id="myVideo"
-          class="w-full min-h-[400px] sm:min-h-[600px] lg:max-h-screen object-fill"
+          class="min-w-[1200px] w-full min-h-[400px] sm:min-h-[800px] lg:max-h-screen object-fill"
         >
           <source src="{% static 'background.mp4' %}" type="video/mp4" />
         </video>
@@ -486,7 +486,6 @@
         style="max-width: 2500px"
         class="w-full py-20 mx-auto border-b-2 bg-white"
       >
-
         <div class="flex flex-col text-center w-full md:w-4/5 mb-10 mx-auto">
           <h1
             style="font-family: 'Kalam', cursive"
@@ -655,7 +654,7 @@
           </div>
         </div>
         <section class="max-w-[2000px] mx-auto text-gray-600 body-font px-10">
-          <div id="stepsbox" class="px-20 py-20 bg-gray-400 mx-auto w-fit relative cornerCutted">
+          <div id="stepsbox" class="px-20 py-20 bg-[#651fff] mx-auto w-fit relative cornerCutted">
             <div
               class="max-w-7xl flex items-center mx-auto border-b mb-20 border-gray-200 sm:flex-row flex-col bg-white px-10 py-10 shadow-[0_25px_40px_-15px_rgba(0,0,0,0.3)]"
             >
@@ -672,12 +671,17 @@
                 <h2 class="text-gray-900 text-2xl title-font font-bold mb-2">
                   Register yourself
                 </h2>
-                <p class="leading-relaxed text-base mb-5">
+                <p class="leading-relaxed text-base mb-3">
                   Blue bottle crucifix vinyl post-ironic four dollar toast vegan
                   taxidermy. Gastropub indxgo juice poutine. Lorem, ipsum dolor
                   sit amet consectetur adipisicing elit. Illo, mollitia.
                 </p>
-                <a class="btn" href="">Get Started</a>
+                <a href="{% url 'events' %}" class="btn text-blue-500 flex items-center gap-2" href="">
+                  Get Started
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                  </svg>
+                </a>
               </div>
             </div>
             <div
@@ -687,12 +691,17 @@
                 <h2 class="text-gray-900 text-2xl title-font font-bold mb-2">
                   Participate in Events
                 </h2>
-                <p class="leading-relaxed text-base mb-5">
+                <p class="leading-relaxed text-base mb-3">
                   Blue bottle crucifix vinyl post-ironic four dollar toast vegan
                   taxidermy. Gastropub indxgo juice poutine. Lorem, ipsum dolor
                   sit amet consectetur adipisicing elit. Illo, mollitia.
                 </p>
-                <a class="btn" href="">Get Started</a>
+                <a href="{% url 'events' %}" class="btn text-blue-500 flex items-center gap-2" href="">
+                  Get Started
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                  </svg>
+                </a>
               </div>
               <div
                 class="w-100 h-100 sm:order-none order-first sm:ml-10 inline-flex items-center justify-center rounded-full flex-shrink-0"
@@ -720,12 +729,17 @@
                 <h2 class="text-gray-900 text-2xl title-font font-bold mb-2">
                   Win Prizes
                 </h2>
-                <p class="leading-relaxed text-base mb-5">
+                <p class="leading-relaxed text-base mb-3">
                   Blue bottle crucifix vinyl post-ironic four dollar toast vegan
                   taxidermy. Gastropub indxgo juice poutine. Lorem, ipsum dolor
                   sit amet consectetur adipisicing elit. Illo, mollitia.
                 </p>
-                <a class="btn" href="">Get Started</a>
+                <a href="{% url 'events' %}" class="btn text-blue-500 flex items-center gap-2" href="">
+                  Get Started
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
@@ -744,13 +758,23 @@
         <div class="flex flex-col text-center w-full md:w-4/5 mb-10 mx-auto">
           <h1
             style="font-family: 'Kalam', cursive"
-            class="text-4xl sm:text-5xl font-bold title-font px-20 py-3 text-black w-fit mx-auto border-b-4 border-black"
+            class="text-4xl sm:text-5xl font-bold title-font px-20 py-3 text-black w-fit mx-auto"
           >
             Our Team
           </h1>
+          <div id="teamanimation" style="margin: auto;">
+            <div
+              style="
+                background: black;
+                height: 4px;
+                width: 100%;
+                margin: auto;
+              "
+            ></div>
+          </div>
         </div>
         <section class="max-w-6xl mx-auto text-gray-600 body-font">
-          <div class="container px-5 py-5 mx-auto">
+          <div id="teambox" class="container px-5 py-5 mx-auto">
             <div class="flex flex-wrap -m-2">
               <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
                 <div
@@ -1188,6 +1212,21 @@
           if($("#stepsanimation").hasClass("animateborder"))
           $("#stepsanimation").addClass("reverseanimateborder");
           $("#stepsanimation").removeClass("animateborder");
+        }
+
+
+        var teamboxTop = $("#teambox").offset().top;
+
+        if ( (docViewTop + $(window).height()) - 50 >= teamboxTop) {
+          if(!$("#teamanimation").hasClass("animateborder")){
+            $("#teamanimation").addClass("animateborder");
+            $("#teamanimation").removeClass("reverseanimateborder");
+
+          }
+        }else{
+          if($("#teamanimation").hasClass("animateborder"))
+          $("#teamanimation").addClass("reverseanimateborder");
+          $("#teamanimation").removeClass("animateborder");
         }
 
       }
