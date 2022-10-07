@@ -59,7 +59,8 @@ def pay(request,e,id,event_id):
             'INDUSTRY_TYPE_ID': 'Retail',
             'WEBSITE': 'WEBSTAGING',
             'CHANNEL_ID': 'WEB',
-            'CALLBACK_URL': 'http://127.0.0.1:8000/paymenthandler/' + str(e) + str("/") + str(orders_placed.id) + str("/") + str(event_id) + str("/"),
+            # 'CALLBACK_URL': 'http://127.0.0.1:8000/paymenthandler/' + str(e) + str("/") + str(orders_placed.id) + str("/") + str(event_id) + str("/"),
+            'CALLBACK_URL': 'https://ncercollege.herokuapp.com/'  + str(e) + str("/") + str(orders_placed.id) + str("/") + str(event_id) + str("/"),
             
 
         }
@@ -86,7 +87,9 @@ def pay(request,e,id,event_id):
             'INDUSTRY_TYPE_ID': 'Retail',
             'WEBSITE': 'WEBSTAGING',
             'CHANNEL_ID': 'WEB',
-            'CALLBACK_URL': 'http://127.0.0.1:8000/paymenthandler/'  + str(e) + str("/") + str(orders_placed.id) + str("/") + str(event_id) + str("/"),
+            # 'CALLBACK_URL': 'http://127.0.0.1:8000/paymenthandler/'  + str(e) + str("/") + str(orders_placed.id) + str("/") + str(event_id) + str("/"),
+            'CALLBACK_URL': 'https://ncercollege.herokuapp.com/'  + str(e) + str("/") + str(orders_placed.id) + str("/") + str(event_id) + str("/"),
+
             
 
         }
