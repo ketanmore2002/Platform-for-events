@@ -180,7 +180,7 @@ def adminpanel (request,id) :
     user_name =  request.user.username
     user_id =  request.user.id
     # total_users = teams.objects.all().count() + player.objects.all().count()
-    total_users = player.objects.all().count() + teams.objects.aggregate(Sum('number_of_members'))["number_of_members__sum"]
+    total_users = host.objects.all().count() + player.objects.all().count() + teams.objects.aggregate(Sum('number_of_members'))["number_of_members__sum"]
 
     if host.objects.filter(user_name = user_name , user_id = user_id , status = "active").exists() :
 
@@ -480,7 +480,7 @@ def delete_event (request,id):
         events.objects.get(id=id).delete()
         player.objects.filter(event_id = id).delete()
         teams.objects.filter(event_id = id).delete()
-        return redirect("/")
+        return redirect("/check_event")
     else:
             return HttpResponse('Something Went Wrong!!!')
 
