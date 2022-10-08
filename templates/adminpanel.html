@@ -66,34 +66,6 @@
                     <span class="mt-1 mx-2">Unpaid Participants</span></a>
             </li>
 
-            <hr class="sidebar-divider d-none d-md-block mt-2">
-
-
-            <li class="nav-item my-1 d-flex align-items-center justify-content-around">
-                <div class="d-flex align-items-center ">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-sliders" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
-                    </svg>
-                    <span class="mt-1 ml-3 text-white d-block">Receive</span>
-                </div>
-                {% if entry == 'active' %}
-                    <input id="receivedStatus" type="checkbox" checked data-toggle="toggle" data-onstyle="success" class="d-block">
-                {% else %}
-                    <input id="receivedStatus" type="checkbox" data-toggle="toggle" data-onstyle="success" class="d-block">
-                {% endif %}
-
-                <script>
-                    $("#receivedStatus").change(()=>{
-                        const current_event_id = $("#this_event_id").val();
-                        const checkURL = "/change_id/"+current_event_id + "/";
-
-                        $.post(checkURL,{ 'csrfmiddlewaretoken': '{{csrf_token}}' },  (result)=>{
-                            $("#receivedStatus").prop("checked", !checkBoxes.prop("checked"));
-                        })
-                    })
-                </script>
-            </li>
-
 
 
             <hr class="sidebar-divider d-none d-md-block mt-2">
@@ -276,9 +248,35 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="mt-5 mb-2 py-2 border rounded pr-5 bg- shadow">
+                        <div class="w-full my-1 d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center mx-3">
+                                <span class="mt-1 ml-3 text-black d-block" style="font-size: 1.2rem;">Stop or allow the registration to these event</span>
+                            </div>
+                            <div>
+                                {% if entry == 'active' %}
+                                    <input id="receivedStatus2" type="checkbox" checked data-toggle="toggle" data-onstyle="success" class="d-block">
+                                {% else %}
+                                    <input id="receivedStatus2" type="checkbox" data-toggle="toggle" data-onstyle="success" class="d-block">
+                                {% endif %}
+                            </div>
+            
+                            <script>
+                                $("#receivedStatus2").change(()=>{
+                                    const current_event_id = $("#this_event_id").val();
+                                    const checkURL = "/change_id/"+current_event_id + "/";
+            
+                                    $.post(checkURL,{ 'csrfmiddlewaretoken': '{{csrf_token}}' },  (result)=>{
+                                        $("#receivedStatus2").prop("checked", !checkBoxes.prop("checked"));
+                                    })
+                                })
+                            </script>
+                        </div>
+                    </div>
                     
                     
-                    <div class="my-5">
+                    <div class="my-2">
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4 ">
                             <!-- <div class="card-header py-3" style="background-color: #3e41ed;">
@@ -430,6 +428,33 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+
+                    <div class="mt-5 mb-2 py-2 border rounded pr-5 bg- shadow">
+                        <div class="w-full my-1 d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center mx-3">
+                                <span class="mt-1 ml-3 text-black d-block" style="font-size: 1.2rem;">Stop or allow the registration to these event</span>
+                            </div>
+                            <div>
+                                {% if entry == 'active' %}
+                                    <input id="receivedStatus" type="checkbox" checked data-toggle="toggle" data-onstyle="success" class="d-block">
+                                {% else %}
+                                    <input id="receivedStatus" type="checkbox" data-toggle="toggle" data-onstyle="success" class="d-block">
+                                {% endif %}
+                            </div>
+            
+                            <script>
+                                $("#receivedStatus").change(()=>{
+                                    const current_event_id = $("#this_event_id").val();
+                                    const checkURL = "/change_id/"+current_event_id + "/";
+            
+                                    $.post(checkURL,{ 'csrfmiddlewaretoken': '{{csrf_token}}' },  (result)=>{
+                                        $("#receivedStatus").prop("checked", !checkBoxes.prop("checked"));
+                                    })
+                                })
+                            </script>
                         </div>
                     </div>
                     

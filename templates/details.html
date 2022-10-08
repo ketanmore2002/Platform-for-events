@@ -1,198 +1,703 @@
+{% extends 'base.html' %} {% block content %}
 
-{% extends 'base.html' %}
+<title>Document</title>
 
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
 
-{% block content %}
+<!-- JQuery -->
+<script
+  src="https://code.jquery.com/jquery-3.6.1.js"
+  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+  crossorigin="anonymous"
+></script>
 
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap"
+  rel="stylesheet"
+/>
 
-    <title>Document</title>
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+  }
+  @media (max-width: 500px) {
+    html {
+      font-size: 12px;
+    }
+  }
 
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  pre {
+    white-space: pre-wrap; /* css-3 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+  }
+</style>
 
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<section
+  id="detailsPage"
+  class="text-gray-600 body-font py-20"
+  style="padding-top: 80px"
+>
+  <div class="container-fluid px-5 py-10 mx-auto flex flex-col">
+    <div class="rounded-lg h-96 overflow-hidden relative">
 
-    <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-
-    <style>
-      body{
-        font-family: 'Poppins', sans-serif;
-      }
-      @media (max-width: 500px) {
-        html{
-            font-size: 12px;
-        }
-      }
-
-      pre {
-        white-space: pre-wrap;       /* css-3 */
-        white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-        white-space: -pre-wrap;      /* Opera 4-6 */
-        white-space: -o-pre-wrap;    /* Opera 7 */
-        word-wrap: break-word;       /* Internet Explorer 5.5+ */
-       }
-    </style>
-
-
-
-
-
-<section id="detailsPage" class="text-gray-600 body-font py-20" style="padding-top: 80px">
+      {% if event.poster_url %}
+      <img
+      id="poster_url"
+      alt="content"
+      class="object-cover object-center h-full w-full"
+      src="{{ event.poster_url }}"
+    />
       
-    <div class="container-fluid px-5 py-10 mx-auto flex flex-col">
-        {% comment %} <button class="" onclick="window.history.back()">
-          <div id="closeDetailPage" class="mb-5" style="cursor: pointer;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
-              <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-            </svg>
-          </div>
-        </button> {% endcomment %}
-        <div class="rounded-lg h-96 overflow-hidden relative">
-            <img id="poster_url" alt="content" class="object-cover object-center h-full w-full" src="https://img.freepik.com/free-vector/green-sand-paper_53876-86281.jpg?w=1060&t=st=1664517849~exp=1664518449~hmac=52aa99881012fefe313bc1b06e3d66c72d1a517bb375fab7a6f55fc783593d98">
+      {% else %}
+      <img
+        id="poster_url"
+        alt="content"
+        class="object-cover object-center h-full w-full"
+        src="https://img.freepik.com/free-vector/abstract-colorful-technology-dotted-wave-background_1035-17450.jpg?w=1060&t=st=1665187505~exp=1665188105~hmac=031742e777c1d8ea104e794bfc2ac8b8e96e17b751f046fed9d58527ebc9dd5b"
+      />
+      <h1
+        class="absolute font-medium title-font text-white text-6xl font-bolder mb-4"
+        id="event_name"
+        style="
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-weight: 800;
+        "
+      >
+        {{ event.event_name }}
+      </h1>
+      {% endif %}
 
-            <h1 class="absolute font-medium title-font  text-gray-900 text-6xl font-bolder mb-4" id="event_name" style="top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: 800;">{{ event.event_name }}</h1>
-        </div>
-        <div class="flex flex-col-reverse lg:flex-row mt-10">
-            <div class="lg:w-1/3 flex items-center gap-5 lg:block text-center sm:pr-8 sm:py-8 mt-5 sm:mt-0">
-                <div class="hidden sm:flex w-1/3 lg:w-full mx-auto rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400" style="width: 150px; height: 150px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                    </svg>
-                </div>
-                <div class="w-full sm:w-2/3 lg:w-full flex flex-col items-center justify-center text-left px-3 lg:px-0  mt-0 lg:mt-5 border-l border-r lg:border-0">
-                    <div class="w-full flex items-center justify-center mt-4 pb-2 border-b-2">
-                        <div class="flex items-center justify-between w-4/5 mx-auto">
-                          <h2 class="w-36 font-medium title-font text-gray-900 text-xl" >Host Name</h2>
-                          <span class="text-center" id="host_name">{{ event.host_name }}</span>
-                        </div>
-                    </div>
-                    <div class="w-full flex items-center justify-center mt-4 pb-2 border-b-2">
-                        <div class="flex items-center justify-between w-4/5 mx-auto">
-                          <h2 class="w-36 font-medium title-font  text-gray-900 text-xl" >Host Email</h2>
-                          <span class="text-center" id="host_email">{{ event.host_email }}</span>
-                        </div>
-                    </div>
-                    <div class="w-full flex items-center justify-center mt-4 pb-2 border-b-2">
-                        <div class="flex items-center justify-between w-4/5 mx-auto">
-                          <h2 class="w-36 font-medium title-font  text-gray-900 text-xl" >Host Phone</h2>
-                          <span class="text-center" id="host_phone">{{ event.host_phone }}</span>
-                        </div>
-                    </div>
-                    <h2 class="w-36 font-medium title-font  text-gray-900 text-2xl mt-4" >Prizes</h2>
-                    <div class="w-full flex items-center justify-center mt-4 pb-2 border-b-2">
-                      <div class="flex items-center justify-between w-4/5 mx-auto">
-                        <img class="w-12 h-100" src="https://cdn-icons-png.flaticon.com/512/4692/4692383.png" alt="prize">
-                        <h2 class="w-36 font-medium title-font  text-gray-900 text-xl" id="first_prize" >{{ event.first_prize }} Rs.</h2>
-                      </div>
-                    </div>
-
-                    <div class="w-full flex items-center justify-center mt-4 pb-2 border-b-2">
-                      <div class="flex items-center justify-between w-4/5 mx-auto">
-                        <img class="w-12 h-100" src="https://cdn-icons-png.flaticon.com/512/4692/4692385.png" alt="prize">
-                        <h2 class="w-36 font-medium title-font  text-gray-900 text-xl" id="second_prize">{{ event.second_prize }} Rs.</h2>
-                      </div>
-                    </div>
-
-                    <div class="w-full flex items-center justify-center mt-4 pb-2 border-b-2">
-                      <div class="flex items-center justify-between w-4/5 mx-auto">
-                        <img class="w-12 h-100" src="https://cdn-icons-png.flaticon.com/512/4692/4692387.png" alt="prize">
-                        <h2 class="w-36 font-medium title-font  text-gray-900 text-xl" id="third_prize">{{ event.third_prize }} Rs.</h2>
-                      </div>
-                    </div>
-
-                    
-                    
-                </div>
-            </div>
-            <div class="lg:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-
-                <div class="flex flex-col items-center justify-center">
-
-                    {% if remaining <= 5 %}
-                      <div class="w-full px-8 py-4 mb-4 bg-red-200 rounded">
-                        <p><b>Note: </b> Last {{ remaining }} remaining.</p>
-                      </div>
-                    {% endif %}
-                    {% if remaining == 0 %}
-                      <div class="w-full px-8 py-4 mb-4 bg-red-200 rounded">
-                        <p><b>Note: </b>  Maximum number of participant limit reached !</p>
-                      </div>
-                    {% endif %}
-                    
-                    <div class="w-full flex items-end justify-between pb-2 border-b-2">
-                        <div class="flex items-center gap-5">
-                          <h2 class="font-medium title-font text-gray-900 text-xl" style="color: black;">Event Date : </h2>
-                          <span class=" leading-relaxed text-lg text-left text-gray-500" id="event_date">{{ event.event_date }}</span>
-                        </div>
-                        {% if remaining > 0 and event.entry == "active" %}
-                        <div class="flex items-center gap-5">
-                          <a href="/participation_form/{{ event.pk }}" id="redirectBtn" class="text-white bg-indigo-500 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Register</a>
-                        </div>
-                        {% endif %}
-                    </div>
-
-                    <div class="w-full mt-4 pb-2 border-b-2">
-                        <span class="font-medium title-font text-gray-900 text-xl float-left mr-4" style="color: black;">Event Description : </span>
-                        <p class="leading-relaxed text-lg text-left text-gray-500" id="event_desc">{{ event.discription }}</p>
-                    </div>
-
-                    <div class="w-full flex items-end  mt-4 pb-2">
-                        <h2 class="font-medium title-font text-gray-900 text-xl" style="color: black;">Event Type : </h2>
-                        <span class="mx-4 leading-relaxed text-lg text-left text-gray-500" id="event_type">{{ event.type_of_event }}</span>
-                    </div>
-
-                    {% comment %} <div class="w-full flex items-end  mt-4 pb-2">
-                        <h2 class="font-medium title-font text-gray-900 text-xl" style="color: black;">Event Type : </h2>
-                        <span class="mx-4 leading-relaxed text-lg text-left text-gray-500" id="event_type">Individual / Team</span>
-                    </div> {% endcomment %}
-
-                    <div class="w-full flex items-end  mt-4 pb-2">
-                        <h2 class="font-medium title-font text-gray-900 text-xl" style="color: black;">Registration start Date : </h2>
-                        <span class="mx-4 leading-relaxed text-lg text-left text-gray-500" id="event_open_date">{{ event.opening_event_date }}</span>
-                    </div>
-
-                    <div class="w-full flex items-end  mt-4 pb-2">
-                        <h2 class="font-medium title-font text-gray-900 text-xl" style="color: black;">Registration Closing Date : </h2>
-                        <span class="mx-4 leading-relaxed text-lg text-left text-gray-500" id="event_close_date">{{ event.closing_event_date }}</span>
-                    </div>
-
-                    <div class="w-full flex items-end  mt-4 pb-2 border-b-2">
-                        <h2 class="font-medium title-font text-gray-900 text-xl" style="color: black;">Registration Fee : </h2>
-                        <span class="mx-4 leading-relaxed text-lg text-left text-gray-500" id="event_fee">{{ event.event_fee }}</span>
-                    </div>
-
-                    <div class="w-full mt-4 pb-2 border-b-2">
-                        <span class="font-medium title-font text-gray-900 text-xl float-left mr-4" style="color: black;">Event Venue : </span>
-                        <p class="leading-relaxed text-lg text-left text-gray-500" id="event_venue">{{ event.event_venue }}</p>
-                    </div>
-
-                    <div class="w-full mt-4 pb-2 border-b-2">
-                        <span class="font-medium title-font text-gray-900 text-xl text-left" style="color: black;">Rules and Regulations : </span><br><br>
-                        <pre style="font-family: 'Poppins', sans-serif;" class="w-100 text-lg text-left text-gray-500" id="event_rules">{{ event.rules }}</pre>
-                    </div>
-                    
-                </div>
-
-                <!-- <p class="leading-relaxed text-lg mb-4">Meggings portland fingerstache lyft, post-ironic fixie man bun banh mi umami everyday carry hexagon locavore direct trade art party. Locavore small batch listicle gastropub farm-to-table lumbersexual salvia messenger bag. Coloring book flannel truffaut craft beer drinking vinegar sartorial, disrupt fashion axe normcore meh butcher. Portland 90's scenester vexillologist forage post-ironic asymmetrical, chartreuse disrupt butcher paleo intelligentsia pabst before they sold out four loko. 3 wolf moon brooklyn.</p>
-                <a class="text-indigo-500 inline-flex items-center">Learn More
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                    </svg>
-                </a> -->
-            </div>
-        </div>
-        </div>
     </div>
-  </section>
+    <div class="flex flex-col-reverse lg:flex-row mt-10">
+      <div
+        class="lg:w-1/3 flex items-center gap-5 lg:block text-center sm:pr-8 sm:pb-8"
+      >
+        <div class="w-full lg:w-full">
+          <div
+            class="flex flex-col justify-center text-left px-3 pb-3 lg:px-0"
+          >
+            <div
+              class="w-full flex items-center justify-center py-3 border border-2 shadow-lg rounded-xl"
+            >
+              <div class="flex flex-col items-center gap-2 w-full">
+                <h2 class="font-medium title-font text-gray-900 text-xl">
+                  Host Name
+                </h2>
+                <span class="overflow-x-auto no-scrollbar" id="host_name"
+                  >{{ event.host_name }}</span
+                >
+              </div>
+            </div>
+            <div
+              class="w-full flex items-center justify-center mt-4 py-3 border border-2 shadow-lg rounded-xl"
+            >
+              <div class="flex flex-col items-center gap-2 w-full">
+                <h2 class="font-medium title-font text-gray-900 text-xl">
+                  Host Email
+                </h2>
+                <span class="overflow-x-auto no-scrollbar" id="host_email"
+                  >{{ event.host_email }}</span
+                >
+              </div>
+            </div>
+            <div
+              class="w-full flex items-center justify-center mt-4 py-3 border border-2 shadow-lg rounded-xl"
+            >
+              <div class="flex flex-col items-center gap-2 w-full">
+                <h2 class="font-medium title-font text-gray-900 text-xl">
+                  Host Phone
+                </h2>
+                <span class="overflow-x-auto no-scrollbar" id="host_phone"
+                  >{{ event.host_phone }}</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="flex flex-col items-center justify-center text-left px-3 lg:px-0 mt-0 lg:mt-5"
+          >
+            <h2 class="w-36 font-medium title-font text-gray-900 text-2xl mt-4">
+              Prizes
+            </h2>
+            <div class="w-full mt-4 border border-2 shadow-lg rounded-xl py-2">
+              <div class="w-full flex items-center px-5 py-3">
+                <div class="w-full flex flex-col">
+                  <span class="overflow-x-auto no-scrollbar">First Place</span>
+                  <h2
+                    class="w-36 font-medium title-font text-gray-900 text-xl"
+                    id="first_prize"
+                  >
+                    {{event.first_prize }} Rs.
+                  </h2>
+                </div>
+                <div class="w-12">
+                  <img
+                    class="w-12 h-100"
+                    src="https://cdn-icons-png.flaticon.com/512/4692/4692383.png"
+                    alt="prize"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full mt-4 border border-2 shadow-lg rounded-xl py-2">
+              <div class="w-full flex items-center px-5 py-3">
+                <div class="w-full flex flex-col">
+                  <span class="overflow-x-auto no-scrollbar">Second Place</span>
+                  <h2
+                    class="w-36 font-medium title-font text-gray-900 text-xl"
+                    id="second_prize"
+                  >
+                    {{ event.second_prize }} Rs.
+                  </h2>
+                </div>
+                <div class="w-12">
+                  <img
+                    class="w-12 h-100"
+                    src="https://cdn-icons-png.flaticon.com/512/4692/4692385.png"
+                    alt="prize"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full mt-4 border border-2 shadow-lg rounded-xl py-2">
+              <div class="w-full flex items-center px-5 py-3">
+                <div class="w-full flex flex-col">
+                  <span class="overflow-x-auto no-scrollbar">Third Place</span>
+                  <h2
+                    class="w-36 font-medium title-font text-gray-900 text-xl"
+                    id="third_prize"
+                  >
+                    {{event.third_prize }} Rs.
+                  </h2>
+                </div>
+                <div class="w-12">
+                  <img
+                    class="w-12 h-100"
+                    src="https://cdn-icons-png.flaticon.com/512/4692/4692387.png"
+                    alt="prize"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="lg:w-2/3 sm:pl-8 sm:py-8 border-gray-200 mt-4 pt-4 sm:mt-0 text-center sm:text-left border border-2 shadow-xl rounded-xl pr-5 mb-10"
+      >
+        <div class="flex flex-col items-center justify-center">
+          {% if remaining <= 5 %} {% if remaining == 0 %}
+          <div class="w-full px-8 py-4 mb-4 bg-red-200 rounded">
+            <p><b>Note: </b> Maximum number of participant limit reached !</p>
+          </div>
+          {% else %}
+          <div class="w-full px-8 py-4 mb-4 bg-red-200 rounded">
+            <p><b>Note: </b> Last {{ remaining }} remaining.</p>
+          </div>
+          {% endif %} {% endif %}
+
+          <div class="w-full flex items-end justify-between pb-2 border-b-2">
+            <div class="flex items-center gap-5">
+              <h2
+                class="font-medium title-font text-gray-900 text-xl"
+                style="color: black"
+              >
+                Event Date :
+              </h2>
+              <span
+                class="leading-relaxed text-lg text-left text-gray-500"
+                id="event_date"
+                >{{ event.event_date }}</span
+              >
+            </div>
+            {% if remaining > 0 and event.entry == "active" %}
+            <div class="flex items-center gap-5">
+              <a
+                href="/participation_form/{{ event.pk }}"
+                id="redirectBtn"
+                class="text-white bg-indigo-500 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded"
+                >Register</a
+              >
+            </div>
+            {% endif %}
+          </div>
+
+          <div class="w-full mt-4 pb-2 border-b-2">
+            <span
+              class="font-medium title-font text-gray-900 text-xl float-left mr-4"
+              style="color: black"
+              >Event Description :
+            </span>
+            <p
+              class="leading-relaxed text-lg text-left text-gray-500"
+              id="event_desc"
+            >
+              {{ event.discription }}
+            </p>
+          </div>
+
+          <div class="w-full flex items-end mt-4 pb-2">
+            <h2
+              class="font-medium title-font text-gray-900 text-xl"
+              style="color: black"
+            >
+              Event Type :
+            </h2>
+            <span
+              class="mx-4 leading-relaxed text-lg text-left text-gray-500"
+              id="event_type"
+              >{{ event.type_of_event }}</span
+            >
+          </div>
+
+          <div class="w-full flex items-end mt-4 pb-2">
+            <h2
+              class="font-medium title-font text-gray-900 text-xl"
+              style="color: black"
+            >
+              Registration start Date :
+            </h2>
+            <span
+              class="mx-4 leading-relaxed text-lg text-left text-gray-500"
+              id="event_open_date"
+              >{{ event.opening_event_date }}</span
+            >
+          </div>
+
+          <div class="w-full flex items-end mt-4 pb-2">
+            <h2
+              class="font-medium title-font text-gray-900 text-xl"
+              style="color: black"
+            >
+              Registration Closing Date :
+            </h2>
+            <span
+              class="mx-4 leading-relaxed text-lg text-left text-gray-500"
+              id="event_close_date"
+              >{{ event.closing_event_date }}</span
+            >
+          </div>
+
+          <div class="w-full flex items-end mt-4 pb-2 border-b-2">
+            <h2
+              class="font-medium title-font text-gray-900 text-xl"
+              style="color: black"
+            >
+              Registration Fee :
+            </h2>
+            <span
+              class="mx-4 leading-relaxed text-lg text-left text-gray-500"
+              id="event_fee"
+              >{{ event.event_fee }}</span
+            >
+          </div>
+
+          <div class="w-full mt-4 pb-2 border-b-2">
+            <span
+              class="font-medium title-font text-gray-900 text-xl float-left mr-4"
+              style="color: black"
+              >Event Venue :
+            </span>
+            <p
+              class="leading-relaxed text-lg text-left text-gray-500"
+              id="event_venue"
+            >
+              {{ event.event_venue }}
+            </p>
+          </div>
+
+          <div class="w-full mt-4 pb-2 border-b-2">
+            <span
+              class="font-medium title-font text-gray-900 text-xl text-left"
+              style="color: black"
+              >Rules and Regulations : </span
+            ><br /><br />
+            <pre
+              style="font-family: 'Poppins', sans-serif"
+              class="w-100 text-lg text-left text-gray-500"
+              id="event_rules"
+            >
+{{ event.rules }}</pre
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
-  {% endblock content %}
+
+
+
+
+
+
+
+<section
+  id="detailsPage"
+  class="hidden text-gray-600 body-font mx-auto"
+  style="padding-top: 80px; max-width: 2500px"
+>
+  <div class="container px-5 py-5 mx-auto flex flex-col">
+    <div class="w-100 flex justify-end">
+      <button
+        id="closeDetailPage"
+        class="mb-5 p-2 bg-gray-300 rounded-full"
+        style="cursor: pointer"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="currentColor"
+          class="bi bi-x"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="w-full rounded-lg h-96 overflow-hidden relative">
+      <img
+        id="poster_url"
+        alt="content"
+        class="object-cover object-center h-full w-full"
+        src="https://img.freepik.com/free-vector/green-sand-paper_53876-86281.jpg?w=1060&t=st=1664517849~exp=1664518449~hmac=52aa99881012fefe313bc1b06e3d66c72d1a517bb375fab7a6f55fc783593d98"
+      />
+
+      <h1
+        class="absolute font-medium title-font text-white text-center text-6xl font-bolder mb-4"
+        id="event_name"
+        style="
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-weight: 800;
+        "
+      >
+        {{ event.event_name }}
+      </h1>
+    </div>
+    <div class="flex flex-col-reverse lg:flex-row mt-10">
+      <div
+        class="lg:w-1/3 flex items-center gap-5 lg:block text-center sm:pr-8 sm:py-8 mt-5 sm:mt-0"
+      >
+        <div class="w-full lg:w-full">
+          <div
+            class="flex flex-col justify-center text-left px-3 pb-3 lg:px-0 mt-0 lg:mt-5"
+          >
+            <div
+              class="w-full flex items-center justify-center py-3 border border-2 shadow-lg rounded-xl"
+            >
+              <div class="flex flex-col items-center gap-2 w-full">
+                <h2 class="font-medium title-font text-gray-900 text-xl">
+                  Host Name
+                </h2>
+                <span class="overflow-x-auto no-scrollbar" id="host_name"
+                  >{{ event.host_name }}</span
+                >
+              </div>
+            </div>
+            <div
+              class="w-full flex items-center justify-center mt-4 py-3 border border-2 shadow-lg rounded-xl"
+            >
+              <div class="flex flex-col items-center gap-2 w-full">
+                <h2 class="font-medium title-font text-gray-900 text-xl">
+                  Host Email
+                </h2>
+                <span class="overflow-x-auto no-scrollbar" id="host_email"
+                  >{{ event.host_email }}</span
+                >
+              </div>
+            </div>
+            <div
+              class="w-full flex items-center justify-center mt-4 py-3 border border-2 shadow-lg rounded-xl"
+            >
+              <div class="flex flex-col items-center gap-2 w-full">
+                <h2 class="font-medium title-font text-gray-900 text-xl">
+                  Host Phone
+                </h2>
+                <span class="overflow-x-auto no-scrollbar" id="host_phone"
+                  >{{ event.host_phone }}</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="flex flex-col items-center justify-center text-left px-3 lg:px-0 mt-0 lg:mt-5"
+          >
+            <h2 class="w-36 font-medium title-font text-gray-900 text-2xl mt-4">
+              Prizes
+            </h2>
+            <div class="w-full mt-4 border border-2 shadow-lg rounded-xl py-2">
+              <div class="w-full flex items-center px-5 py-3">
+                <div class="w-full flex flex-col">
+                  <span class="overflow-x-auto no-scrollbar">First Place</span>
+                  <h2
+                    class="w-36 font-medium title-font text-gray-900 text-xl"
+                    id="first_prize"
+                  >
+                    {{event.first_prize }} Rs.
+                  </h2>
+                </div>
+                <div class="w-12">
+                  <img
+                    class="w-12 h-100"
+                    src="https://cdn-icons-png.flaticon.com/512/4692/4692383.png"
+                    alt="prize"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full mt-4 border border-2 shadow-lg rounded-xl py-2">
+              <div class="w-full flex items-center px-5 py-3">
+                <div class="w-full flex flex-col">
+                  <span class="overflow-x-auto no-scrollbar">Second Place</span>
+                  <h2
+                    class="w-36 font-medium title-font text-gray-900 text-xl"
+                    id="second_prize"
+                  >
+                    {{ event.second_prize }} Rs.
+                  </h2>
+                </div>
+                <div class="w-12">
+                  <img
+                    class="w-12 h-100"
+                    src="https://cdn-icons-png.flaticon.com/512/4692/4692385.png"
+                    alt="prize"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full mt-4 border border-2 shadow-lg rounded-xl py-2">
+              <div class="w-full flex items-center px-5 py-3">
+                <div class="w-full flex flex-col">
+                  <span class="overflow-x-auto no-scrollbar">Third Place</span>
+                  <h2
+                    class="w-36 font-medium title-font text-gray-900 text-xl"
+                    id="third_prize"
+                  >
+                    {{event.third_prize }} Rs.
+                  </h2>
+                </div>
+                <div class="w-12">
+                  <img
+                    class="w-12 h-100"
+                    src="https://cdn-icons-png.flaticon.com/512/4692/4692387.png"
+                    alt="prize"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="lg:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left"
+      >
+        <!-- <h2 class="font-medium title-font  text-gray-900 text-4xl font-bold mb-4" id="event_name">Web Development</h2> -->
+
+        <div class="flex flex-col items-center justify-center">
+          {% if remaining <= 5 %} {% if remaining == 0 %}
+          <div class="w-full px-8 py-4 mb-4 bg-red-200 rounded">
+            <p><b>Note: </b> Maximum number of participant limit reached !</p>
+          </div>
+          {% else %}
+          <div class="w-full px-8 py-4 mb-4 bg-red-200 rounded">
+            <p><b>Note: </b> Last {{ remaining }} remaining.</p>
+          </div>
+          {% endif %} {% endif %}
+
+          <div class="w-full flex items-end justify-between pb-2 border-b-2">
+            <div class="flex items-center gap-5">
+              <h2
+                class="font-medium title-font text-gray-900 text-xl"
+                style="color: black"
+              >
+                Event Date :
+              </h2>
+              <span
+                class="leading-relaxed text-lg text-left text-gray-500"
+                id="event_date"
+                >{{ event.event_date }}</span
+              >
+            </div>
+            {% if remaining > 0 and event.entry == "active" %}
+            <div class="flex items-center gap-5">
+              <a
+                href="/participation_form/{{ event.pk }}"
+                id="redirectBtn"
+                class="text-white bg-indigo-500 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded"
+                >Register</a
+              >
+            </div>
+            {% endif %}
+          </div>
+
+          <div
+            id="maxlimitreached"
+            class="w-full px-8 py-4 mb-4 bg-red-200 rounded hidden"
+          >
+            <p><b>Note: </b> Maximum number of participant limit reached !</p>
+          </div>
+
+          <div
+            id="remainingparti"
+            class="w-full px-8 py-4 mb-4 bg-red-200 rounded hidden"
+          >
+            <p>
+              <b>Note: </b> Last
+              <span id="remaining_participant">{{ remaining }}</span> remaining.
+            </p>
+          </div>
+
+          <div class="w-full flex items-end justify-between pb-2 border-b-2">
+            <div class="flex items-center gap-5">
+              <h2
+                class="font-medium title-font text-gray-900 text-xl"
+                style="color: black"
+              >
+                Event Date :
+              </h2>
+              <span
+                class="leading-relaxed text-lg text-left text-gray-500"
+                id="event_date"
+                >{{ event.event_date }}</span
+              >
+            </div>
+            <div class="flex items-center gap-5">
+              <a
+                id="redirectBtn"
+                href=""
+                class="text-white bg-indigo-500 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded"
+                >Register</a
+              >
+            </div>
+          </div>
+
+          <div class="w-full mt-4 pb-2 border-b-2">
+            <span
+              class="font-medium title-font text-gray-900 text-xl float-left mr-4"
+              style="color: black"
+              >Event Description :
+            </span>
+            <p
+              class="leading-relaxed text-lg text-left text-gray-500"
+              id="event_desc"
+            >
+              {{ event.discription }}
+            </p>
+          </div>
+
+          <div class="w-full flex items-end mt-4 pb-2">
+            <h2
+              class="font-medium title-font text-gray-900 text-xl"
+              style="color: black"
+            >
+              Event Type :
+            </h2>
+            <span
+              class="mx-4 leading-relaxed text-lg text-left text-gray-500"
+              id="event_type"
+              >{{ event.type_of_event }}</span
+            >
+          </div>
+
+          <div class="w-full flex items-end mt-4 pb-2">
+            <h2
+              class="font-medium title-font text-gray-900 text-xl"
+              style="color: black"
+            >
+              Registration start Date :
+            </h2>
+            <span
+              class="mx-4 leading-relaxed text-lg text-left text-gray-500"
+              id="event_open_date"
+              >{{ event.opening_event_date }}</span
+            >
+          </div>
+
+          <div class="w-full flex items-end mt-4 pb-2">
+            <h2
+              class="font-medium title-font text-gray-900 text-xl"
+              style="color: black"
+            >
+              Registration Closing Date :
+            </h2>
+            <span
+              class="mx-4 leading-relaxed text-lg text-left text-gray-500"
+              id="event_close_date"
+              >{{ event.closing_event_date }}</span
+            >
+          </div>
+
+          <div class="w-full flex items-end mt-4 pb-2 border-b-2">
+            <h2
+              class="font-medium title-font text-gray-900 text-xl"
+              style="color: black"
+            >
+              Registration Fee :
+            </h2>
+            <span
+              class="mx-4 leading-relaxed text-lg text-left text-gray-500"
+              id="event_fee"
+              >{{ event.event_fee }}</span
+            >
+          </div>
+
+          <div class="w-full mt-4 pb-2 border-b-2">
+            <span
+              class="font-medium title-font text-gray-900 text-xl float-left mr-4"
+              style="color: black"
+              >Event Venue :
+            </span>
+            <p
+              class="leading-relaxed text-lg text-left text-gray-500"
+              id="event_venue"
+            >
+              {{ event.event_venue }}
+            </p>
+          </div>
+
+          <div class="w-full mt-4 pb-2 border-b-2">
+            <span
+              class="font-medium title-font text-gray-900 text-xl text-left"
+              style="color: black"
+              >Rules and Regulations : </span
+            ><br /><br />
+            <pre
+              style="font-family: 'Poppins', sans-serif"
+              class="w-100 text-lg text-left text-gray-500"
+              id="event_rules"
+            >
+              {{ event.rules }}
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

@@ -6,7 +6,6 @@
 
 {% block content %}
 
-  </div> -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -17,37 +16,74 @@
       }
     </style>
     
-    <div id="events_container" class="fluid-container relative" style="margin-top: 120px">
+    <div id="events_container" class="fluid-container relative mx-auto" style="margin-top: 100px; max-width: 2500px;">
 
-        <h2 class="text-6xl text-center mt-10 mb-5 font-bold text-indigo-700 ">Your Events</h2>
+        <h2 class="text-6xl text-center font-bold text-indigo-700 ">Your Events</h2>
 
         {% if events %}
 
-        <div class="container mx-auto max-w-6xl p-5 mb-2 sm:mb-0 text-center md:text-right">
+        <div class=" p-5 sm:mb-0 text-center md:text-right">
           <button id="create_event_btn" class="text-blue-600 border border-2 border-blue-600 py-2 px-4 focus:outline-none hover:bg-blue-700 hover:text-white rounded text-lg">Create Event</button>
         </div>
 
-        <div class="container mx-auto max-w-6xl mt-2 mb-20 grid gap-10 grid-cols-1 lg:grid-cols-2 grid-rows-3 px-5">
+        <div class="w-full mb-20 grid gap-5 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 px-5">
 
           {% for event in events %}
-            <div class=" w-full max-w-2/3 mx-auto sm:w-full sm:max-w-3xl flex justify-center transition-none lg:transition lg:ease-in-out lg:hover:-translate-y-1 lg:hover:scale-110 duration-300 ...">
+            <!-- <div class=" w-full max-w-2/3 mx-auto sm:w-full sm:max-w-3xl flex justify-center transition-none lg:transition lg:ease-in-out lg:hover:-translate-y-1 lg:hover:scale-105 duration-300 ...">
                 <div class="flex flex-col-reverse sm:flex-row  rounded-lg bg-white border border-2 shadow-xl py-2">
-                  
+                  <h5 class="text-gray-900 text-2xl font-medium mb-2 flex items-top gap-3">
+                      <img width="30px" height="30px" src="https://cdn-icons-png.flaticon.com/512/1356/1356607.png" alt="Event">
+                      {{ event.event_name }}
+                  </h5>
                   <div class="p-4 pt-0 sm:p-6 flex flex-col justify-start">
-                    <h5 class="text-gray-900 text-2xl font-medium mb-2 flex items-top gap-3">
-                        {% comment %} <img width="30px" height="30px" src="https://cdn-icons-png.flaticon.com/512/1356/1356607.png" alt="Event"> {% endcomment %}
-                        {{ event.event_name }}
-                    </h5>
                     <p class="text-gray-700 text-base mb-4">
                       {{ event.discription | slice:":130" }}.....
                     </p>
+                    <img class="w-4/5 mx-auto sm:w-48 sm:h-48 object-cover rounded-t-lg md:rounded-none md:rounded-l-lg" src="https://img.freepik.com/free-vector/devops-team-abstract-concept-vector-illustration-software-development-team-member-agile-workflow-devops-team-model-it-teamwork-project-management-integrated-practice-abstract-metaphor_335657-2299.jpg?w=740&t=st=1664186562~exp=1664187162~hmac=fd4732771fc49a1c765ea50586dbc4ca17f532ee4e9c9057ea001b7a8ae7d82b" alt="" />
                     <a href="/adminpanel/{{ event.pk }}/ " class="w-fit flex items-center gap-2 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">
                         Check Out
                     </a>
                   </div>
-                  <img class="w-4/5 mx-auto sm:w-48 sm:h-48 object-cover rounded-t-lg md:rounded-none md:rounded-l-lg" src="https://img.freepik.com/free-vector/devops-team-abstract-concept-vector-illustration-software-development-team-member-agile-workflow-devops-team-model-it-teamwork-project-management-integrated-practice-abstract-metaphor_335657-2299.jpg?w=740&t=st=1664186562~exp=1664187162~hmac=fd4732771fc49a1c765ea50586dbc4ca17f532ee4e9c9057ea001b7a8ae7d82b" alt="" />
                 </div>
+            </div> -->
+
+            <div
+              class="w-full mx-auto flex justify-center transition-none lg:transition lg:ease-in-out lg:hover:-translate-y-1 lg:hover:scale-105 lg:hover:shadow-xl duration-300 ..."
+            >
+              <div
+                class="flex flex-col-reverse sm:flex-row items-center rounded-lg bg-white border border-1 shadow-xl py-2"
+              >
+                <div class="p-6 sm:p-6 flex flex-col justify-start">
+                  <h5
+                    class="text-gray-900 text-2xl font-medium mb-2 flex items-top gap-3"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bookmark-plus" viewBox="0 0 16 16">
+                      <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                      <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                    {{ event.event_name }}
+                  </h5>
+                  <div class="flex flex-col-reverse sm:flex-row">
+                    <div class="flex flex-col justify-between">
+                      <small
+                        class="text-gray-700 text-base mb-4 max-h-36 h-fit overflow-auto no-scrollbar"
+                      >
+                        {{ event.discription }} . . . . .
+                      </small>
+                      <div class="flex items-center gap-3">
+                        <a href="/adminpanel/{{ event.pk }}/ " class="w-fit flex items-center gap-2 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">
+                            Check Out
+                        </a>
+                      </div>
+                    </div>
+                    <img class="w-4/5 mx-auto sm:w-48 sm:h-48 object-cover rounded-t-lg md:rounded-none md:rounded-l-lg" src="https://img.freepik.com/free-vector/devops-team-abstract-concept-vector-illustration-software-development-team-member-agile-workflow-devops-team-model-it-teamwork-project-management-integrated-practice-abstract-metaphor_335657-2299.jpg?w=740&t=st=1664186562~exp=1664187162~hmac=fd4732771fc49a1c765ea50586dbc4ca17f532ee4e9c9057ea001b7a8ae7d82b" alt="" />
+                  </div>
+                </div>
+              </div>
             </div>
+
+
+
           {% endfor %}
         </div>
 
@@ -72,11 +108,10 @@
 
 
 
-    <form class="hidden w-full h-fit" id="create_event_form" method="post" action="{% url 'add_event' %}" style="margin-top: 120px">
+    <form class="hidden w-full h-fit" id="create_event_form" method="post" action="{% url 'add_event' %}" style="margin-top: 50px">
       {% csrf_token %}
-      <div class="relative fluid-container w-full h-full py-5" >
-        
-        <div class="container mx-auto max-w-5xl border-b-2 border-purple-500 px-3 py-3 mb-5 flex items-center justify-between bg-[#ffffffe2] rounded-t">
+      <div class="relative fluid-container w-full h-full py-5 " >
+        <div class="container mx-auto max-w-5xl border-b-2 border-purple-500 px-3 py-3 mb-5 flex items-center justify-between bg-[#ffffffe2] rounded-t ">
           <button id="closeCreateEventForm" type="button" class="bg-white border-0">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
@@ -145,7 +180,16 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="event_date">
                   Event Date
                 </label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="event_date" name="event_date"  placeholder="Ex. 12-09-2022 12:30 PM" onfocus="this.type = 'date'">
+                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="event_date" name="event_date"  placeholder="Ex. 12-09-2022" onfocus="this.type = 'date'">
+              </div>
+            </div>
+
+            <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="number_of_members_allowed_in_event">
+                  Number of participants allowed in Event
+                </label>
+                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="number_of_members_allowed_in_event" name="number_of_members_allowed_in_event" type="number" placeholder="Number of participants allowed">
               </div>
             </div>
 

@@ -21,6 +21,7 @@
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 
    <style>
      body{
@@ -94,73 +95,185 @@
 <body>
     <div class="w-full">
 
-      <header id="header_navbar" style="max-width: 2000px; top: 0; left: 50%; transform: translate(-50%, 0); z-index: 999;" class="fixed top-0 left-50 w-full text-white body-font mx-auto mb-2 mx-auto bg-white">
-        <div id="menuContainer" class="lg:container mx-auto block lg:flex  p-5 items-center justify-between">
-          <div id="smallNavbar" class="flex lg:block items-center justify-between lg:w-fit w-full h-fit">
-            <a class="flex title-font font-medium items-center text-white">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-blue-500">
-                  <path fill-rule="evenodd" d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.177A7.547 7.547 0 016.648 6.61a.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 011.925-3.545 3.75 3.75 0 013.255 3.717z" clip-rule="evenodd" />
+      <header
+        id="header_navbar"
+        style="
+          max-width: 2500px;
+          max-height: 100vh;
+          top: 0;
+          left: 50%;
+          transform: translate(-50%, 0);
+          z-index: 100;
+        "
+        class="fixed top-0 left-50 w-full h-100 text-white body-font mx-auto mb-2 mx-auto bg-transparent"
+      >
+        <div
+          id="menuContainer"
+          class="w-full block lg:flex p-5 items-center justify-between bg-white"
+        >
+          <div
+            id="smallNavbar"
+            class="flex lg:block items-center justify-between lg:w-fit w-full h-fit"
+          >
+            <a class="flex title-font font-medium items-center text-black">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-10 h-10 text-blue-600"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.177A7.547 7.547 0 016.648 6.61a.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 011.925-3.545 3.75 3.75 0 013.255 3.717z"
+                  clip-rule="evenodd"
+                />
               </svg>
-                
-              <span class="ml-3 text-2xl font-bold text-black">TechFest</span>
+              <span class="ml-3 text-2xl font-bold">TechTantra</span>
             </a>
             <div class="block lg:hidden">
               <button id="menuOpener">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-9 h-9 text-black">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>                
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="black"
+                  class="w-9 h-9"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
               </button>
             </div>
           </div>
           <div id="MenuBar" class="hidden lg:block w-full">
-            <div  class="lg:flex flex-col lg:flex-row gap-6 lg:gap-0 items-center justify-between py-10 lg:py-0">
-
-              <nav class="mx-auto md:ml-auto flex flex-col lg:flex-row flex-wrap text-base items-center justify-centerlg:gap-5 gap-20 lg:gap-5 mb-20 lg:mb-0 lg:mr-5">
-                <a href="/" class="lg:mr-5 px-2 py-1 text-lg font-bold text-black cursor-pointer hover:text-blue-500 hover:border-b-2 hover:border-black">Home</a>
-                <a href="{% url 'events' %}" class="lg:mr-5 px-2 py-1 text-lg font-bold text-black cursor-pointer hover:text-blue-500 hover:border-b-2 hover:border-black">Events</a>
-                <a href="{% url 'about' %}" class="lg:mr-5 px-2 py-1 text-lg font-bold text-black cursor-pointer hover:text-blue-500 hover:border-b-2 hover:border-black">About Us</a>
-                <!-- <a class="lg:mr-5 px-2 py-1 text-lg font-medium cursor-pointer hover:text-white hover:border-b-2 hover:border-white"">Contact Us</a> -->
+            <div
+              class="lg:flex flex-col lg:flex-row gap-6 lg:gap-0 items-center justify-between py-10 lg:py-0"
+            >
+              <nav
+                class="mx-auto md:ml-auto flex flex-col lg:flex-row flex-wrap text-base items-center justify-centerlg:gap-5 gap-20 lg:gap-5 mb-20 lg:mb-0 lg:mr-5"
+              >
+                <a
+                  href="/"
+                  class="lg:mr-5 px-2 py-1 text-lg text-black font-bold cursor-pointer hover:text-blue-700 hover:border-b-4 hover:border-black"
+                  >Home</a
+                >
+                <a
+                  href="{% url 'events' %}"
+                  class="lg:mr-5 px-2 py-1 text-lg text-black font-bold cursor-pointer hover:text-blue-700 hover:border-b-4 hover:border-black"
+                  >Events</a
+                >
+                <a
+                  href="{% url 'about' %}"
+                  class="lg:mr-5 px-2 py-1 text-lg text-black font-bold cursor-pointer hover:text-blue-700 hover:border-b-4 hover:border-black"
+                  >About Us</a
+                >
               </nav>
 
-              <div class="flex flex-col lg:flex-row  items-center justify-between gap-20 lg:gap-5">
-
+              <div
+                class="flex flex-col lg:flex-row items-center justify-between gap-20 lg:gap-5"
+              >
                 {% if request.user.is_authenticated %}
 
-                  <a href="{% url 'my_events' %}" class="inline-flex items-center text-black font-bold border border-2 border-black py-2 px-3 focus:outline-none hover:text-blue-500  rounded text-base mt-4 md:mt-0 cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9" stroke="currentColor" class="w-6 h-6 mr-1">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
-                    </svg>                                      
-                    My Events
-                  </a>
+                {% if not data %}
 
-                  
-                  <a href="{% url 'logout' %}" class="inline-flex items-center text-black font-bold border border-2 border-black py-2 px-3 focus:outline-none hover:text-blue-500  rounded text-base mt-4 md:mt-0 cursor-pointer">Sign Out
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                      <path d="M5 12h14M12 5l7 7-7 7"></path>
-                    </svg>
-                  </a>
+                <a
+                  href="{% url 'my_events' %}"
+                  class="inline-flex items-center text-black font-bold border border-2 border-black py-2 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 cursor-pointer hover:text-blue-700"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.8"
+                    stroke="currentColor"
+                    class="w-6 h-6 mr-1"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                    />
+                  </svg>
+                  My Events
+                </a>
 
                 {% else %}
 
+                <a
+                  href="{% url 'become_host' %}"
+                  class="inline-flex items-center text-black font-bold border border-2 border-black py-2 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 cursor-pointer hover:text-blue-700"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.8"
+                    stroke="currentColor"
+                    class="w-6 h-6 mr-1"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                    />
+                  </svg>
+                  Host Events
+                </a>
 
-                <form method="post" action="{% provider_login_url 'google' %}?next=/">
+                {% endif %}
+
+                <a
+                  href="{% url 'logout' %}"
+                  class="inline-flex items-center text-black font-bold border border-2 border-black py-2 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 cursor-pointer hover:text-blue-700"
+                  >Sign Out
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    class="w-4 h-4 ml-1"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+
+                {% else %}
+
+                <form
+                  method="post"
+                  action="{% provider_login_url 'google' %}?next=/"
+                >
                   {% csrf_token %}
-                  <button class="inline-flex items-center text-black font-bold border border-2 border-black py-2 px-3 focus:outline-none hover:text-blue-500  rounded text-base mt-4 md:mt-0 cursor-pointer">Sign In
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                  <button
+                    class="inline-flex items-center text-black font-bold border border-2 border-black py-2 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 cursor-pointer hover:text-blue-700"
+                  >
+                    Sign In
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="w-4 h-4 ml-1"
+                      viewBox="0 0 24 24"
+                    >
                       <path d="M5 12h14M12 5l7 7-7 7"></path>
                     </svg>
                   </button>
                 </form>
 
                 {% endif %}
-
-                
-
               </div>
             </div>
           </div>
         </div>
-    </header>
+      </header>
 
 
 
