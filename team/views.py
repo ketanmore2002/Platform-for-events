@@ -541,3 +541,10 @@ def change_id (request,id):
                 return HttpResponse(404)
     else :
           return HttpResponse(404)
+
+
+
+
+def t_c (request) :
+    return render(request, "terms.html")
+
