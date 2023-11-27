@@ -49,10 +49,6 @@ The Events and Competitions Management System is a web application built using t
 
 If you would like to contribute to the project, please follow the guidelines in the CONTRIBUTING.md file.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
-
 ## Acknowledgments
 
 - Thank you to the Django community for providing an excellent web framework.
@@ -60,8 +56,29 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Contact
 
-For any inquiries, please contact [Your Name] at [your.email@example.com].
+For any inquiries, please contact Ketan More at moreketan2002@gmail.com.
 
 ---
 
 Feel free to customize this template based on your specific project details and structure. Make sure to include accurate instructions for setting up the project, and provide clear guidance for users who want to contribute to your project.
+
+## Images 
+
+<img width="1467" alt="Screenshot 2023-11-27 at 10 36 33 AM" src="https://github.com/ketanmore2002/Platform_for_events/assets/88627103/9caba7f9-acd1-4c3d-95bf-8b2b06a47c79">
+
+<img width="1467" alt="Screenshot 2023-11-27 at 10 37 16 AM" src="https://github.com/ketanmore2002/Platform_for_events/assets/88627103/181272d4-be9e-4503-87ed-9c93ba5b1702">
+
+<img width="1467" alt="Screenshot 2023-11-27 at 10 38 37 AM" src="https://github.com/ketanmore2002/Platform_for_events/assets/88627103/bd3bbdec-325f-4623-b9ee-77352b053b45">
+
+<img width="1467" alt="Screenshot 2023-11-27 at 10 39 02 AM" src="https://github.com/ketanmore2002/Platform_for_events/assets/88627103/6274bd46-2c6f-4a65-a75f-70f65a52eb45">
+
+<img width="1467" alt="Screenshot 2023-11-27 at 10 39 53 AM" src="https://github.com/ketanmore2002/Platform_for_events/assets/88627103/3f65fcba-c070-4fe3-83ef-9fdb2711ba3d">
+
+<img width="1467" alt="Screenshot 2023-11-27 at 10 41 15 AM" src="https://github.com/ketanmore2002/Platform_for_events/assets/88627103/7f714fa7-58d8-44ce-bf9e-3d8db0b86a15">
+
+<img width="1467" alt="Screenshot 2023-11-27 at 10 41 36 AM" src="https://github.com/ketanmore2002/Platform_for_events/assets/88627103/fd24840d-4298-44f5-8b62-f85562b5ed7d">
+
+<img width="1467" alt="Screenshot 2023-11-27 at 10 43 20 AM" src="https://github.com/ketanmore2002/Platform_for_events/assets/88627103/45f9353d-1b5b-4a8c-a410-29bc8924cdac">
+
+<img width="1467" alt="Screenshot 2023-11-27 at 10 43 35 AM" src="https://github.com/ketanmore2002/Platform_for_events/assets/88627103/67569505-c45f-45d5-a5a7-25fad39f7df0">
+
