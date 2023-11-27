@@ -1,5 +1,3 @@
-Certainly! Writing a comprehensive README file is crucial for helping users understand your project. Below is a template for your README file:
-
 ---
 
 # Events and Competitions Management System
