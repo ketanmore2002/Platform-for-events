@@ -26,7 +26,7 @@ The Events and Competitions Management System is a web application built using t
 
 ### Installation
 
-1. Clone the repository: `git clone https://github.com/yourusername/your-repo.git`
+1. Clone the repository: `git clone https://github.com/ketanmore2002/Platform-for-events.git`
 2. Navigate to the project directory: `cd your-repo`
 3. Create a virtual environment: `python -m venv venv`
 4. Activate the virtual environment:
